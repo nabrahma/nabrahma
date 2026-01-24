@@ -1,70 +1,83 @@
+<!-- HERO -->
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=26&pause=1000&color=58A6FF&center=true&vCenter=true&width=700&lines=Hi%2C+I'm+Nabaskar+👋;UI%2FUX+Designer+%26+3D+Artist;Blender+%7C+Figma+%7C+Game+Dev" />
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=500&size=28&pause=1200&color=8AB4F8&center=true&vCenter=true&width=800&lines=Hi%2C+I'm+Nabaskar+👋;Designer+%7C+3D+Artist+%7C+Game+Developer;I+design+and+build+interactive+experiences" />
 </p>
 
+<br/>
+
+<p align="center">
+  <em>
+    Designing experiences where <strong>visuals</strong>, <strong>interaction</strong>, and <strong>technology</strong> meet.
+  </em>
+</p>
+
+<br/><br/>
 
 ---
 
-## 🚀 About Me
+## 🌒 About
 
-I'm a **UI/UX Designer & 3D Artist** passionate about creating immersive, emotional, and user-centered digital experiences.
+I’m a **Designer, 3D Artist, and Unity Game Developer** who enjoys crafting immersive digital experiences — from clean, thoughtful interfaces to interactive 3D and game worlds.
 
-- 🎨 UI/UX Design with **Figma & Framer**
-- 🧊 3D environments & assets in **Blender**
-- 🎮 Learning **Game Development**
-- 🌐 Exploring **Three.js & Web-based 3D**
-- 🏆 **1st Prize** – *Thrift Up* (College Project)
+I focus on **clarity, mood, and flow**, making sure things don’t just work, but *feel right*.
 
-> I believe good design should feel invisible, intuitive, and human.
+- UI & interaction design with **Figma / Framer**
+- 3D environments & assets in **Blender**
+- Game development using **Unity**
+- Frontend basics with **HTML, CSS, JavaScript**
+- Exploring **Svelte & React** for interactive web experiences
 
----
+<br/>
 
-## 🛠 Tech Stack
-
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=figma,blender,framer,js,html,css,git,github,threejs,react" />
-</p>
+> *I like building things that feel calm, intentional, and alive.*
 
 ---
 
-## 📊 GitHub Stats
+## 🧩 Tools I Use
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=tokyonight&hide_border=true" />
+  <img src="https://skillicons.dev/icons?i=figma,blender,unity,html,css,js,svelte,react,git,github&theme=dark" />
 </p>
 
-<p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=YOUR_USERNAME&theme=tokyonight&hide_border=true" />
-</p>
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_USERNAME&layout=compact&theme=tokyonight&hide_border=true" />
-</p>
+<br/>
 
 ---
 
-## 🐍 Contribution Graph
+## 📊 Development Snapshot
 
-![snake animation](https://raw.githubusercontent.com/nabrahma/nabrahma/output/github-contribution-grid-snake.svg)
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=nabrahma&show_icons=true&theme=tokyonight&hide_border=true" height="150" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=nabrahma&theme=tokyonight&hide_border=true" height="150" />
+</p>
+
+<br/>
 
 ---
 
-## 🌐 Connect With Me
+## 🐍 Building in Public
 
 <p align="center">
-  <a href="https://linkedin.com/in/YOUR_LINKEDIN">
-    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin" />
+  <img src="https://raw.githubusercontent.com/nabrahma/nabrahma/output/snake.svg" alt="Contribution Snake" />
+</p>
+
+<br/>
+
+---
+
+## 🌐 Connect
+
+<p align="center">
+  <a href="https://www.linkedin.com/in/nabaskar/">
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white" />
   </a>
-  <a href="https://twitter.com/YOUR_TWITTER">
-    <img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x" />
-  </a>
-  <a href="https://YOUR_PORTFOLIO">
-    <img src="https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=firefox" />
+  &nbsp;&nbsp;
+  <a href="https://nabaskarbrahma-67168.web.app/">
+    <img src="https://img.shields.io/badge/Portfolio-111111?style=flat&logo=firefox&logoColor=white" />
   </a>
 </p>
 
----
+<br/>
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=YOUR_USERNAME&style=flat-square&color=blue" />
+  <sub>Always learning. Always refining.</sub>
 </p>
