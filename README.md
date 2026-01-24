@@ -1,16 +1,17 @@
-<!-- CINEMATIC HEADER -->
+<!-- CINEMATIC HEADER IMAGE -->
 <p align="center">
   <img 
-    src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExemxreHBxYzI2aHJic2tidmN3eTVmdWpha3lieXBvMjEzcDhpMWNwMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ckr4W2ppxPBeIF8dx4/giphy.gif"
+    src="./assets/header.png"
     width="100%"
   />
 </p>
 
-<!-- HERO TEXT -->
+<br/>
+
+<h1 align="center">Hi, I’m Nabaskar 👋</h1>
+
 <p align="center">
-  <img 
-    src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=26&pause=1200&color=9AA5FF&center=true&vCenter=true&width=820&lines=Hi%2C+I'm+Nabaskar+👋;Designer+%7C+3D+Artist+%7C+Game+Developer;I+craft+interactive+and+emotional+experiences"
-  />
+  <strong>Designer · 3D Artist · Game Developer</strong>
 </p>
 
 <p align="center">
