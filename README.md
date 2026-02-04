@@ -100,7 +100,7 @@ visual storytelling with interaction and atmosphere.
     <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
   </a>
   &nbsp;&nbsp;&nbsp;
-  <a href="https://nabaskarbrahma-67168.web.app/">
+  <a href="https://nabaskarbrahma.vercel.app/">
     <img src="https://img.shields.io/badge/Portfolio-111111?style=for-the-badge&logo=firefox&logoColor=white" />
   </a>
   &nbsp;&nbsp;&nbsp;
