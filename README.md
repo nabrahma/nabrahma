@@ -59,13 +59,25 @@ visual storytelling with interaction and atmosphere.
 
 ## 🧩 Tools & Technologies
 
-<p align="center">
-  <img 
-    src="https://skillicons.dev/icons?i=figma,blender,unity,unreal,html,css,js,svelte,react,git,github&theme=dark"
-  />
+### 🎨 Design & Creative
+<p>
+  <img src="https://skillicons.dev/icons?i=figma,ps,ai,ae,pr,lr&theme=dark" />
 </p>
 
-<hr style="border:0;height:1px;background:linear-gradient(to right,transparent,#333,transparent);margin:28px 0;" />
+### 🧊 3D & Game Development
+<p>
+  <img src="https://skillicons.dev/icons?i=blender,unity,unreal,cs&theme=dark" />
+</p>
+
+<p>
+  <img src="./assets/marvelous-designer-logo.png" width="40px" />
+</p>
+
+### 💻 Web & Programming
+<p>
+  <img src="https://skillicons.dev/icons?i=html,css,js,svelte,react,python,git,github&theme=dark" />
+</p>
+
 
 ## 📊 Development Snapshot
 
