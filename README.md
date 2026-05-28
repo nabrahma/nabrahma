@@ -5,7 +5,7 @@
 
 <br/>
 
-<h1 align="center">Nabaskar</h1>
+<h1 align="center">(￣┰￣*)</h1>
 
 <p align="center">
   <strong>Game Developer · 3D Artist · Technical Artist</strong>
