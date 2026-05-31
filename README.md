@@ -6,19 +6,17 @@
 <br/>
 
 <p align="center">
-<pre align="center">
+  <sub>— game developer · 3d artist · technical artist —</sub>
+</p>
+
+<p align="center">
+<pre align="center" style="overflow-x: auto; max-width: 100%;">
 (o_ _)ﾉ
 </pre>
 </p>
 
 <p align="center">
-  <sub>— game developer · 3d artist · technical artist —</sub>
-</p>
-
-<br/>
-
-<p align="center">
-<pre align="center">
+<pre align="center" style="overflow-x: auto; max-width: 100%;">
   ░▒▓ I build quiet worlds. ▓▒░
   ░▒▓ Mood is the design. ▓▒░
 </pre>
@@ -27,11 +25,11 @@
 ---
 
 <p align="center">
-<pre align="center">
+<pre align="center" style="overflow-x: auto; max-width: 100%;">
    ┌───────────────────────────────────────────────────────────────────────┐
    │                                                                       │
    │   $ whoami                                                            │
-   │   > (￣▽￣*)ゞ                                                        │
+   │   > (￣▽￣*) ゞ                                                        │
    │                                                                       │
    │   $ ls ./practice                                                     │
    │   unity/   c#/   hlsl/   blender/   shaders/   atmosphere/            │
@@ -47,10 +45,28 @@
 </pre>
 </p>
 
+<p align="center">
+<pre align="center" style="overflow-x: auto; max-width: 100%;">
+   ┌───────────────────────────────────────────────────────────────────────┐
+   │                                                                       │
+   │   $ ls ./random                                                       │
+   │   web-experiments/   cli-tools/   doodles/                            │
+   │   side-projects/   half-baked-ideas/                                  │
+   │                                                                       │
+   │   # also builds:                                                      │
+   │   small apps, weird tools, half-finished experiments                  │
+   │   the kind of stuff you code at 2am when the mood hits                │
+   │   nothing formal, just curiosity in executable form                   │
+   │                                                                       │
+   │   $ _                                                                 │
+   └───────────────────────────────────────────────────────────────────────┘
+</pre>
+</p>
+
 ---
 
 <p align="center">
-<pre align="center">
+<pre align="center" style="overflow-x: auto; max-width: 100%;">
   ██╗    ██╗██╗  ██╗ █████╗ ████████╗    ██╗    
   ██║    ██║██║  ██║██╔══██╗╚══██╔══╝    ██║    
   ██║ █╗ ██║███████║███████║   ██║       ██║    
@@ -61,7 +77,7 @@
 </p>
 
 <p align="center">
-<pre align="center">
+<pre align="center" style="overflow-x: auto; max-width: 100%;">
    ╔════════════════════════════════════════════════════════════════════╗
    ║  [Unity + C#]   ──  gameplay systems                              ║
    ║                         interaction logic                         ║
@@ -85,7 +101,7 @@
 ---
 
 <p align="center">
-<pre align="center">
+<pre align="center" style="overflow-x: auto; max-width: 100%;">
   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
   ░  ▄▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▄  ░
   ░  █                                                     █  ░
@@ -119,7 +135,7 @@
 ---
 
 <p align="center">
-<pre align="center">
+<pre align="center" style="overflow-x: auto; max-width: 100%;">
   ╔══════════════════════════════════════════════════════════════╗
   ║   B U I L D   L O G                                        ║
   ║   // signal active // still running                        ║
@@ -144,7 +160,7 @@
 ---
 
 <p align="center">
-<pre align="center">
+<pre align="center" style="overflow-x: auto; max-width: 100%;">
   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
   ▓  in public  ──  contribution trail                      ▓
   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
@@ -161,7 +177,7 @@
 ---
 
 <p align="center">
-<pre align="center">
+<pre align="center" style="overflow-x: auto; max-width: 100%;">
    ┌──────────────────────────────────────────────────────────┐
    │  ✦  find me in the static                               │
    └──────────────────────────────────────────────────────────┘
@@ -185,10 +201,10 @@
 <br/>
 
 <p align="center">
-<pre align="center">
-  ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░
+<pre align="center" style="overflow-x: auto; max-width: 100%;">
+  ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░
   making spaces for feelings that are easier to walk through
   than explain.
-  ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░
+  ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░ ░
 </pre>
 </p>
