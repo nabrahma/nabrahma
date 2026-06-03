@@ -145,14 +145,18 @@
 
 <p align="center">
   <img
-    src="https://streak-stats.demolab.com?user=nabrahma&theme=transparent&hide_border=true&border_radius=10&date_format=M%20j%5B%2C%20Y%5D&ring=8ea6ff&fire=8ea6ff&currStreakLabel=dce6ff&sideLabels=8b949e&currStreakNum=f0f6fc&sideNums=f0f6fc&dates=8b949e&stroke=30363d"
-    width="92%"
+    src="https://github-readme-stats.vercel.app/api?username=nabrahma&show_icons=true&theme=tokyonight&hide_border=true"
+    width="48%"
+  />
+  <img
+    src="https://streak-stats.demolab.com?user=nabrahma&theme=tokyonight&hide_border=true"
+    width="48%"
   />
 </p>
 
 <p align="center">
   <img
-    src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=nabrahma&theme=github_dark"
+    src="https://github-readme-activity-graph.vercel.app/graph?username=nabrahma&theme=react&hide_border=true&area=true&color=58a6ff&line=26e6be&point=ffffff&area_color=26e6be"
     width="92%"
   />
 </p>
