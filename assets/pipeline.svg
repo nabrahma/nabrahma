@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360"
+     role="img" aria-labelledby="pt pd">
+  <title id="pt">How Driftwatch finds silent divergence</title>
+  <desc id="pd">Orders flow from a producer through an event stream to a consumer that writes derived state into Redis. Driftwatch taps the same stream as an independent third consumer, rebuilds the expected state, and reconciles it against Redis. When the two disagree it holds the finding as suspect until a settlement window and a version fence either confirm real drift or clear it.</desc>
+
+  <!--
+    Motion is SMIL animateMotion here rather than CSS: the packets follow
+    L-shaped connectors, and animateMotion takes the same path data the visible
+    connector is drawn from, so a packet can never drift off its own wire.
+
+    Every duration divides 12s (2.4 x 5, 3 x 4, 12 x 1), so the fast packet
+    flow and the slow drift-and-recover story stay phase-locked forever.
+  -->
+  <style>
+    .bg    { fill: #0d1117 }
+    .card  { fill: #161b22; stroke: #30363d; stroke-width: 1 }
+    .wire  { fill: none; stroke: #30363d; stroke-width: 1.5 }
+    .ttl   { font: 600 13px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; fill: #e6edf3 }
+    .sub   { font: 400 10.5px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; fill: #8b949e }
+    .tag   { font: 400 10px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; fill: #6e7681; letter-spacing: .6px }
+    .cap   { font: 400 11.5px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; fill: #6e7681 }
+    .pkt   { fill: #58a6ff }
+    .pkt2  { fill: #a371f7 }
+    .bad   { fill: #d29922 }
+    .head  { fill: #30363d }
+    .watch { stroke: #a371f7 }
+    .okc   { fill: #3fb950 }
+    .warnc { fill: #d29922 }
+    .okt   { font: 600 12px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; fill: #3fb950 }
+    .warnt { font: 600 12px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; fill: #d29922 }
+
+    @media (prefers-color-scheme: light) {
+      .bg { fill: #ffffff }
+      .card { fill: #f6f8fa; stroke: #d0d7de }
+      .wire { stroke: #d0d7de }
+      .ttl { fill: #1f2328 } .sub { fill: #656d76 }
+      .tag { fill: #8c959f } .cap { fill: #656d76 }
+      .pkt { fill: #0969da } .pkt2 { fill: #8250df } .bad { fill: #9a6700 }
+      .head { fill: #d0d7de } .watch { stroke: #8250df } .glow { fill: #8250df }
+      .okc { fill: #1a7f37 } .warnc { fill: #9a6700 }
+      .okt { fill: #1a7f37 } .warnt { fill: #9a6700 }
+    }
+
+    /* driftwatch keeps scanning: a dash chases the node's own outline.
+       dasharray total == the rounded-rect perimeter (394), so it loops seamlessly */
+    .scan { fill: none; stroke-width: 1.5; stroke-dasharray: 44 350; animation: scan 3s linear infinite }
+    @keyframes scan { to { stroke-dashoffset: -394 } }
+
+    .glow { fill: #a371f7 }
+    .breathe { animation: breathe 3s ease-in-out infinite }
+    @keyframes breathe { 0%,100% { opacity: .16 } 50% { opacity: .42 } }
+
+    /* verdict flips to suspect only while the bad write is in flight —
+       hard gaps between the two states, so they are never both painted */
+    .v-ok   { animation: vok 12s linear infinite }
+    .v-susp { animation: vsusp 12s linear infinite }
+    @keyframes vok   { 0%,49% { opacity: 1 } 50%,74% { opacity: 0 } 75%,100% { opacity: 1 } }
+    @keyframes vsusp { 0%,49% { opacity: 0 } 50%,74% { opacity: 1 } 75%,100% { opacity: 0 } }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important }
+      .v-susp { opacity: 0 }
+    }
+  </style>
+
+  <defs>
+    <marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+      <path class="head" d="M0,0 L8,4 L0,8 z"/>
+    </marker>
+    <filter id="soft" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+  </defs>
+
+  <rect class="bg" width="900" height="360" rx="12"/>
+
+  <!-- ============ wires (packets reuse this exact path data) ============ -->
+  <path class="wire" id="s1" d="M190,107 H255"  marker-end="url(#ah)"/>
+  <path class="wire" id="s2" d="M413,107 H478"  marker-end="url(#ah)"/>
+  <path class="wire" id="s3" d="M636,107 H702"  marker-end="url(#ah)"/>
+  <path class="wire" id="s4" d="M338,134 V237 H478" marker-end="url(#ah)" stroke-dasharray="4 4"/>
+  <path class="wire" id="s5" d="M785,134 V237 H644" marker-end="url(#ah)" stroke-dasharray="4 4"/>
+
+  <text class="tag" x="348" y="200">tap</text>
+  <text class="tag" x="712" y="228" text-anchor="end">reconcile</text>
+
+  <!-- ============ nodes ============ -->
+  <g>
+    <rect class="card" x="40"  y="80" width="150" height="54" rx="8"/>
+    <text class="ttl" x="115" y="103" text-anchor="middle">producer</text>
+    <text class="sub" x="115" y="120" text-anchor="middle">order events</text>
+
+    <rect class="card" x="263" y="80" width="150" height="54" rx="8"/>
+    <text class="ttl" x="338" y="103" text-anchor="middle">event stream</text>
+    <text class="sub" x="338" y="120" text-anchor="middle">zeromq</text>
+
+    <rect class="card" x="486" y="80" width="150" height="54" rx="8"/>
+    <text class="ttl" x="561" y="103" text-anchor="middle">consumer</text>
+    <text class="sub" x="561" y="120" text-anchor="middle">applies writes</text>
+
+    <rect class="card" x="710" y="80" width="150" height="54" rx="8"/>
+    <text class="ttl" x="785" y="103" text-anchor="middle">redis</text>
+    <text class="sub" x="785" y="120" text-anchor="middle">derived state</text>
+  </g>
+
+  <!-- driftwatch: the independent third consumer -->
+  <g>
+    <rect class="glow breathe" x="480" y="204" width="162" height="66" rx="12" filter="url(#soft)"/>
+    <rect class="card" x="486" y="210" width="150" height="54" rx="8"/>
+    <rect class="scan watch" x="486" y="210" width="150" height="54" rx="8"/>
+    <text class="ttl" x="561" y="233" text-anchor="middle">driftwatch</text>
+    <text class="sub" x="561" y="250" text-anchor="middle">rebuilds expected</text>
+  </g>
+
+  <!-- ============ packets ============ -->
+  <!-- steady flow: two per segment, half a cycle apart, so the wire is never empty -->
+  <g>
+    <circle class="pkt" r="3.5" opacity="0">
+      <animateMotion dur="2.4s" repeatCount="indefinite" path="M190,107 H255"/>
+      <animate attributeName="opacity" dur="2.4s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;.18;.82;1"/>
+    </circle>
+    <circle class="pkt" r="3.5" opacity="0">
+      <animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M190,107 H255"/>
+      <animate attributeName="opacity" dur="2.4s" begin="1.2s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;.18;.82;1"/>
+    </circle>
+
+    <circle class="pkt" r="3.5" opacity="0">
+      <animateMotion dur="2.4s" begin="0.4s" repeatCount="indefinite" path="M413,107 H478"/>
+      <animate attributeName="opacity" dur="2.4s" begin="0.4s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;.18;.82;1"/>
+    </circle>
+    <circle class="pkt" r="3.5" opacity="0">
+      <animateMotion dur="2.4s" begin="1.6s" repeatCount="indefinite" path="M413,107 H478"/>
+      <animate attributeName="opacity" dur="2.4s" begin="1.6s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;.18;.82;1"/>
+    </circle>
+
+    <circle class="pkt" r="3.5" opacity="0">
+      <animateMotion dur="2.4s" begin="0.8s" repeatCount="indefinite" path="M636,107 H702"/>
+      <animate attributeName="opacity" dur="2.4s" begin="0.8s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;.18;.82;1"/>
+    </circle>
+    <circle class="pkt" r="3.5" opacity="0">
+      <animateMotion dur="2.4s" begin="2.0s" repeatCount="indefinite" path="M636,107 H702"/>
+      <animate attributeName="opacity" dur="2.4s" begin="2.0s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;.18;.82;1"/>
+    </circle>
+
+    <!-- the tap: same events, read independently -->
+    <circle class="pkt2" r="3.5" opacity="0">
+      <animateMotion dur="3s" repeatCount="indefinite" path="M338,134 V237 H478"/>
+      <animate attributeName="opacity" dur="3s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;.12;.88;1"/>
+    </circle>
+    <circle class="pkt2" r="3.5" opacity="0">
+      <animateMotion dur="3s" begin="1.5s" repeatCount="indefinite" path="M338,134 V237 H478"/>
+      <animate attributeName="opacity" dur="3s" begin="1.5s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;.12;.88;1"/>
+    </circle>
+
+    <!-- the reconcile read, back from redis -->
+    <circle class="pkt2" r="3.5" opacity="0">
+      <animateMotion dur="3s" begin="0.75s" repeatCount="indefinite" path="M785,134 V237 H644"/>
+      <animate attributeName="opacity" dur="3s" begin="0.75s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;.12;.88;1"/>
+    </circle>
+
+    <!-- once every 12s a write lands wrong. keyPoints hold the packet parked
+         off-cycle so it crosses only during the drift window. -->
+    <circle class="bad" r="4.5" opacity="0">
+      <animateMotion dur="12s" repeatCount="indefinite" path="M636,107 H702"
+                     keyPoints="0;0;1;1" keyTimes="0;.45;.56;1" calcMode="linear"/>
+      <animate attributeName="opacity" dur="12s" repeatCount="indefinite"
+               values="0;0;1;1;0;0" keyTimes="0;.45;.47;.55;.57;1"/>
+    </circle>
+  </g>
+
+  <!-- ============ verdict ============ -->
+  <g>
+    <g class="v-ok">
+      <circle class="okc" cx="500" cy="294" r="4"/>
+      <text class="okt" x="514" y="298">settled</text>
+      <text class="tag" x="576" y="298">no divergence outside the window</text>
+    </g>
+    <g class="v-susp">
+      <circle class="warnc" cx="500" cy="294" r="4"/>
+      <text class="warnt" x="514" y="298">suspect</text>
+      <text class="tag" x="576" y="298">held for version fence + second confirm</text>
+    </g>
+  </g>
+
+  <text class="cap" x="40" y="298">verdict</text>
+  <line class="wire" x1="40" y1="318" x2="860" y2="318" stroke-dasharray="2 4"/>
+  <text class="cap" x="40" y="340">a disagreement is not drift yet &#8212; separating the two is what cut an 8% false-positive rate at 2,000 events/sec</text>
+</svg>

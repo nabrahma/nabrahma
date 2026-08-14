@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/nabrahma/nabrahma/main/assets/header.svg" width="100%" alt="nabaskar brahma — backend, distributed systems, infrastructure security" />
+<img src="https://raw.githubusercontent.com/nabrahma/nabrahma/main/assets/header.svg" width="100%" alt="nabaskar brahma — backend, distributed systems, the parts that fail quietly" />
 
 <br/>
 
@@ -13,23 +13,41 @@
 
 <br/>
 
-I work on the parts of a system that fail quietly — lock contention, event loops, isolation boundaries, and the measurements that are supposed to tell you when something is wrong.
+Hi, I'm Nabaskar.
 
-Mostly **Go** and **Python**. Kubernetes operators, container sandboxing, and a live trading engine that places real orders. I test hard, and I publish my false-positive rates.
+I got here through game dev — Unity, C#, Blender, a lot of evenings spent on things almost nobody played. What stuck wasn't shipping the games. It was the debugging: the specific pleasure of a bug that only shows up under load and leaves nothing behind when it doesn't.
 
-<br/>
+So now I mostly write **Go** and **Python**, and I spend my time on the parts of a system that fail quietly — lock contention, event loops, isolation boundaries, and the measurements that are supposed to tell you when something is wrong.
+
+That last one is the part I've gotten stubborn about. On one project I had a detection number I was genuinely proud of, went looking for why it was so good, and found two measurement bugs cancelling each other out. The real number was a lot smaller. It's the one on this page, next to its false-positive range, because a number without its error bars isn't a result — it's a mood.
+
+<img src="https://raw.githubusercontent.com/nabrahma/nabrahma/main/assets/rule.svg" width="100%" alt="" />
+
+## What "fails quietly" looks like
+
+The clearest example I have. A stream of events, a consumer applying them, a Redis store holding the derived result. Every arrow here is healthy. The primary path has no idea anything is wrong — it only ever sees its own writes succeed.
+
+So Driftwatch reads the same stream as an independent third consumer, rebuilds what the state *should* be, and reconciles. The interesting part isn't catching a disagreement; it's refusing to call one drift until a settlement window and a version fence have had their say.
+
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/nabrahma/nabrahma/main/assets/pipeline.svg" width="100%" alt="Producer to event stream to consumer to Redis, with Driftwatch tapping the stream as an independent consumer and reconciling against Redis. A bad write turns the verdict from settled to suspect until it can be confirmed." />
+
+</div>
+
+<img src="https://raw.githubusercontent.com/nabrahma/nabrahma/main/assets/rule.svg" width="100%" alt="" />
 
 ## Open source
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/nabrahma/nabrahma/main/assets/oss.svg" width="72%" alt="open source contribution stats" />
+<img src="https://raw.githubusercontent.com/nabrahma/nabrahma/main/assets/oss.svg" width="80%" alt="open source contribution stats" />
 
 </div>
 
 <br/>
 
-The four upstream fixes I'd defend in an interview — each one a bug that was invisible until it wasn't.
+Four fixes from kthena I still think about. Each one was invisible right up until it wasn't.
 
 <table>
 <tr>
@@ -52,9 +70,9 @@ The four upstream fixes I'd defend in an interview — each one a bug that was i
 
 <sub>Also merged: a repo-wide Go 1.26 upgrade in kthena, a <a href="https://github.com/kubernetes-sigs/headlamp/pull/6066">rules-of-hooks fix in kubernetes-sigs/headlamp</a> that removed four eslint suppressions hiding it, and <a href="https://github.com/openfoodfacts/openfoodfacts-explorer/pulls?q=is%3Apr+author%3Anabrahma+is%3Amerged">8 a11y and responsive fixes</a> in Open Food Facts. → <a href="https://github.com/pulls?q=is%3Apr+author%3Anabrahma+is%3Amerged">all merged PRs</a></sub>
 
-<br/>
+<img src="https://raw.githubusercontent.com/nabrahma/nabrahma/main/assets/rule.svg" width="100%" alt="" />
 
-## Projects
+## Things I've built
 
 <details>
 <summary><b>ShortCircuit</b> — live algorithmic trading engine &nbsp;·&nbsp; <code>python · asyncio · postgres</code></summary>
@@ -75,7 +93,7 @@ Places real orders on NSE equities through Fyers API v3. 14.8K LOC across 42 mod
 
 <br/>
 
-Detects silent divergence between an event stream and its derived Redis store by rebuilding expected state as an independent third consumer.
+The one drawn out above. Detects silent divergence between an event stream and its derived Redis store by rebuilding expected state as an independent third consumer.
 
 - Cut an 8% false-positive rate at 2,000 events/sec using a settlement window derived from measured propagation lag, two-phase confirmation with version fencing, and trust states that classify self-inflicted loss as *suspect* rather than *drift*
 - Kubernetes operator on controller-runtime: CRD, validating and defaulting webhooks, leader election, finalizers; Helm chart, Grafana dashboard, 10 alert rules over 48 metrics
@@ -94,7 +112,7 @@ Treats a tool server's self-description as untrusted. Declare, verify, confine.
 - Profiles each server under `strace` in a `--cap-drop ALL --read-only` container, maps observed syscalls to a capability vocabulary, and denies anything the declaration doesn't cover
 - Compiles per-tool seccomp-BPF filters by subtraction from the verified verdict, enforced alongside network namespaces, bind mounts and a CONNECT allow-list proxy
 - 84.6% detection at a measured 25–50% false-positive rate, 87.5% containment, 503/503 identical verdicts across five clean runs
-- An earlier build reported 100%. It was two measurement bugs cancelling out. Rebuilding the methodology so that class of error can't hide again is the part I'd defend hardest.
+- This is the one from up top. An earlier build reported 100%; it was two measurement bugs cancelling out. Rebuilding the methodology so that class of error can't hide again took longer than the feature work did.
 
 </details>
 
@@ -103,7 +121,7 @@ Treats a tool server's self-description as untrusted. Declare, verify, confine.
 
 <br/>
 
-Competitive-programming platform running C++, C#, Lua and GDScript in throwaway containers.
+Competitive-programming platform running C++, C#, Lua and GDScript in throwaway containers. The closest thing here to where I started.
 
 - No network, read-only rootfs, hard CPU / 256 MB / 128-PID caps; eight verdict states from exit codes, runtime and peak memory read from the cgroup
 - 44 endpoints in a 9-package handler → service → repository layering; JWT with rotating SHA-256-hashed refresh tokens over httpOnly cookies
@@ -111,7 +129,7 @@ Competitive-programming platform running C++, C#, Lua and GDScript in throwaway 
 
 </details>
 
-<br/>
+<img src="https://raw.githubusercontent.com/nabrahma/nabrahma/main/assets/rule.svg" width="100%" alt="" />
 
 ## Stack
 
@@ -136,13 +154,13 @@ Competitive-programming platform running C++, C#, Lua and GDScript in throwaway 
 ![React](https://img.shields.io/badge/React-0d1117?style=flat-square&logo=react&logoColor=white&labelColor=0d1117)
 ![Next.js](https://img.shields.io/badge/Next.js-0d1117?style=flat-square&logo=nextdotjs&logoColor=white&labelColor=0d1117)
 
-<sub>started in game dev — <code>unity</code> · <code>c#</code> · <code>blender</code> — still where I go to play</sub>
+<sub>and still <code>unity</code> · <code>c#</code> · <code>blender</code> on weekends, which is where all of this started</sub>
 
 </div>
 
-<br/>
+<img src="https://raw.githubusercontent.com/nabrahma/nabrahma/main/assets/rule.svg" width="100%" alt="" />
 
-## Activity
+## Lately
 
 <div align="center">
 
@@ -152,10 +170,8 @@ Competitive-programming platform running C++, C#, Lua and GDScript in throwaway 
   <img src="https://raw.githubusercontent.com/nabrahma/nabrahma/output/snake.svg" width="100%" alt="contribution graph" />
 </picture>
 
-</div>
+<br/><br/>
 
-<br/>
+<sub>if something here looks wrong, it probably is — <a href="https://github.com/nabrahma/nabrahma/issues">tell me</a></sub>
 
-<div align="center">
-<sub>building the parts nobody sees until they break</sub>
 </div>

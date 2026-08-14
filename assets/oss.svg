@@ -1,46 +1,134 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="480" height="190"
-     viewBox="0 0 480 190" role="img" aria-label="open source contribution stats">
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="214"
+     viewBox="0 0 720 214" role="img" aria-label="open source contribution stats: 17 pull requests merged into 3 upstream projects">
   <style>
-    .bg    { fill: #0d1117; }
-    .frame { fill: none; stroke: #30363d; stroke-width: 1; }
-    .ttl   { font: 600 13px ui-monospace, "SF Mono", Menlo, monospace; fill: #ffffff; letter-spacing: 1.2px; }
-    .lbl   { font: 400 11px ui-monospace, "SF Mono", Menlo, monospace; fill: #8b949e; letter-spacing: 1px; }
-    .val   { font: 400 11px ui-monospace, "SF Mono", Menlo, monospace; fill: #c9d1d9; }
-    .foot  { font: 400 10px ui-monospace, "SF Mono", Menlo, monospace; fill: #6e7681; }
-    .track { fill: #21262d; }
-    .fill  { fill: #ffffff; transform-origin: 20px 0; transform: scaleX(0);
-             animation: grow 1.1s cubic-bezier(.2,.8,.2,1) forwards; }
-    @keyframes grow { to { transform: scaleX(1) } }
+    .bg     { fill: #0d1117 }
+    .frame  { fill: none; stroke: #30363d; stroke-width: 1 }
+    .ttl    { font: 600 13px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; fill: #f0f6fc; letter-spacing: 1.4px }
+    .hdr    { font: 400 11px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; fill: #58a6ff }
+    .lbl    { font: 400 11px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; fill: #8b949e; letter-spacing: 1px }
+    .val    { font: 400 11px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; fill: #e6edf3 }
+    .foot   { font: 400 10px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; fill: #6e7681 }
+    .track  { fill: #21262d }
+    .fill   { fill: #58a6ff }
+    .chipbg { fill: #161b22; stroke: #30363d; stroke-width: 1 }
+    .chiptx { font: 400 10px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; fill: #8b949e }
+    .chipn  { fill: #58a6ff; font-weight: 600 }
+    .rule   { stroke: #21262d; stroke-width: 1 }
 
     @media (prefers-color-scheme: light) {
-      .bg { fill: #ffffff; } .frame { stroke: #d0d7de; }
-      .ttl { fill: #1f2328; } .lbl { fill: #656d76; } .val { fill: #1f2328; }
-      .foot { fill: #8c959f; } .track { fill: #eaeef2; } .fill { fill: #1f2328; }
+      .bg { fill: #ffffff } .frame { stroke: #d0d7de }
+      .ttl { fill: #1f2328 } .hdr { fill: #0969da }
+      .lbl { fill: #656d76 } .val { fill: #1f2328 }
+      .foot { fill: #8c959f } .track { fill: #eaeef2 } .fill { fill: #0969da }
+      .chipbg { fill: #f6f8fa; stroke: #d0d7de }
+      .chiptx { fill: #656d76 } .chipn { fill: #0969da }
+      .rule { stroke: #eaeef2 }
+      .gA, .gC { stop-color: #0969da } .gB { stop-color: #218bff }
+    }
+
+    /* bars grow once, then a highlight keeps sliding along the filled part */
+    .fill  { transform-box: fill-box; transform-origin: left center; transform: scaleX(0);
+             animation: grow 1s cubic-bezier(.2,.85,.25,1) both }
+    @keyframes grow { to { transform: scaleX(1) } }
+
+    .val   { opacity: 0; animation: rise .5s ease-out both }
+    @keyframes rise { from { opacity: 0; transform: translateY(4px) } to { opacity: 1; transform: translateY(0) } }
+
+    .gleam { animation-duration: 3.6s; animation-timing-function: ease-in-out;
+             animation-iteration-count: infinite }
+    .g0 { animation-name: gleam0 } .g1 { animation-name: gleam1 } .g2 { animation-name: gleam2 }
+    @keyframes gleam0 {
+      0%       { transform: translateX(-100px); opacity: 0 }
+      14%      { opacity: .95 }
+      66%      { opacity: .95 }
+      78%,100% { transform: translateX(396px); opacity: 0 }
+    }
+    @keyframes gleam1 {
+      0%       { transform: translateX(-100px); opacity: 0 }
+      14%      { opacity: .95 }
+      66%      { opacity: .95 }
+      78%,100% { transform: translateX(507px); opacity: 0 }
+    }
+    @keyframes gleam2 {
+      0%       { transform: translateX(-100px); opacity: 0 }
+      14%      { opacity: .95 }
+      66%      { opacity: .95 }
+      78%,100% { transform: translateX(676px); opacity: 0 }
+    }
+
+    .chip  { opacity: 0; animation: rise .5s ease-out both }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important }
+      .fill { transform: scaleX(1) }
+      .val, .chip { opacity: 1 }
+      .gleam { opacity: 0 }
     }
   </style>
 
-  <rect class="bg" width="480" height="190" rx="8"/>
-  <rect class="frame" x="0.5" y="0.5" width="479" height="189" rx="8"/>
+  <defs>
+    <linearGradient id="gleamGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop class="gA" offset="0"   stop-color="#58a6ff" stop-opacity="0"/>
+      <stop class="gB" offset=".5"  stop-color="#c9e2ff" stop-opacity=".85"/>
+      <stop class="gC" offset="1"   stop-color="#58a6ff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="clip0"><rect x="22" y="77" width="396" height="8" rx="4"/></clipPath>
+    <clipPath id="clip1"><rect x="22" y="119" width="507" height="8" rx="4"/></clipPath>
+    <clipPath id="clip2"><rect x="22" y="161" width="676" height="8" rx="4"/></clipPath>
+  </defs>
 
-  <text class="ttl" x="20" y="32">OPEN SOURCE</text>
-  <line x1="20" y1="44" x2="460" y2="44" stroke="#30363d" stroke-width="1"/>
+  <rect class="bg" width="720" height="214" rx="10"/>
+  <rect class="frame" x=".5" y=".5" width="719" height="213" rx="10"/>
 
-    <text class="lbl" x="20" y="64">MERGED UPSTREAM</text>
-    <text class="val" x="460" y="64" text-anchor="end">17 merged / 29 opened</text>
-    <rect x="20" y="73" width="440" height="7" rx="3.5" class="track"/>
-    <rect x="20" y="73" width="258" height="7" rx="3.5" class="fill"
-          style="animation-delay:0.25s"/>
-    <text class="lbl" x="20" y="106">ISSUES RESOLVED</text>
-    <text class="val" x="460" y="106" text-anchor="end">12 closed / 16 filed</text>
-    <rect x="20" y="115" width="440" height="7" rx="3.5" class="track"/>
-    <rect x="20" y="115" width="330" height="7" rx="3.5" class="fill"
-          style="animation-delay:0.43s"/>
-    <text class="lbl" x="20" y="148">REPOS LANDED IN</text>
-    <text class="val" x="460" y="148" text-anchor="end">3 upstream projects</text>
-    <rect x="20" y="157" width="440" height="7" rx="3.5" class="track"/>
-    <rect x="20" y="157" width="440" height="7" rx="3.5" class="fill"
-          style="animation-delay:0.61s"/>
+  <text class="ttl" x="22" y="32">OPEN SOURCE</text>
+  <text class="hdr" x="698" y="32" text-anchor="end">17 merged PRs, all upstream</text>
+  <line class="rule" x1="22" y1="44" x2="698" y2="44"/>
 
-  <text class="foot" x="20" y="174">headlamp · openfoodfacts-explorer · kthena</text>
-  <text class="foot" x="460" y="174" text-anchor="end">updated 14 Aug 2026</text>
+  <g>
+    <text class="lbl" x="22" y="68">MERGED UPSTREAM</text>
+    <text class="val" x="698" y="68" text-anchor="end" style="animation-delay:0.7s">17 merged / 29 opened</text>
+    <rect class="track" x="22" y="77" width="676" height="8" rx="4"/>
+    <rect class="fill"  x="22" y="77" width="396" height="8" rx="4"
+          style="animation-delay:0.2s"/>
+    <g clip-path="url(#clip0)">
+      <rect class="gleam g0" x="22" y="77" width="90" height="8"
+            fill="url(#gleamGrad)" style="animation-delay:0.2s"/>
+    </g>
+  </g>
+  <g>
+    <text class="lbl" x="22" y="110">ISSUES RESOLVED</text>
+    <text class="val" x="698" y="110" text-anchor="end" style="animation-delay:0.88s">12 closed / 16 filed</text>
+    <rect class="track" x="22" y="119" width="676" height="8" rx="4"/>
+    <rect class="fill"  x="22" y="119" width="507" height="8" rx="4"
+          style="animation-delay:0.38s"/>
+    <g clip-path="url(#clip1)">
+      <rect class="gleam g1" x="22" y="119" width="90" height="8"
+            fill="url(#gleamGrad)" style="animation-delay:0.38s"/>
+    </g>
+  </g>
+  <g>
+    <text class="lbl" x="22" y="152">REPOS LANDED IN</text>
+    <text class="val" x="698" y="152" text-anchor="end" style="animation-delay:1.06s">3 upstream projects</text>
+    <rect class="track" x="22" y="161" width="676" height="8" rx="4"/>
+    <rect class="fill"  x="22" y="161" width="676" height="8" rx="4"
+          style="animation-delay:0.56s"/>
+    <g clip-path="url(#clip2)">
+      <rect class="gleam g2" x="22" y="161" width="90" height="8"
+            fill="url(#gleamGrad)" style="animation-delay:0.56s"/>
+    </g>
+  </g>
+
+    <g class="chip" style="animation-delay:1.05s">
+      <rect class="chipbg" x="22" y="180" width="166" height="21" rx="10.5"/>
+      <text class="chiptx" x="33" y="195">openfoodfacts-explorer <tspan class="chipn">8</tspan></text>
+    </g>
+    <g class="chip" style="animation-delay:1.17s">
+      <rect class="chipbg" x="196" y="180" width="70" height="21" rx="10.5"/>
+      <text class="chiptx" x="207" y="195">kthena <tspan class="chipn">8</tspan></text>
+    </g>
+    <g class="chip" style="animation-delay:1.29s">
+      <rect class="chipbg" x="274" y="180" width="82" height="21" rx="10.5"/>
+      <text class="chiptx" x="285" y="195">headlamp <tspan class="chipn">1</tspan></text>
+    </g>
+  <text class="foot" x="698" y="195" text-anchor="end">updated 14 Aug 2026</text>
 </svg>

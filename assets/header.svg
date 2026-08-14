@@ -1,103 +1,310 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="860" height="220" viewBox="0 0 860 220" role="img" aria-label="nabaskar brahma — backend, distributed systems, infrastructure security">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400"
+     role="img" aria-labelledby="t d">
+  <title id="t">nabaskar brahma</title>
+  <desc id="d">A terminal window typing out a short session: race tests on driftwatch, a seccomp verify run, and an order-fill replay.</desc>
+
+  <!--
+    One master clock.
+
+    Every looping animation below is 18s long and carries its phase in the
+    keyframe percentages instead of animation-delay. Delays drift: a renderer
+    that starts, throttles or restarts one animation independently pulls it out
+    of step with the others, and lines that share a baseline end up printed on
+    top of each other. Same-length clocks cannot drift apart, and each terminal
+    line owns its own row anyway, so overlap is impossible by construction.
+
+    Character widths are pinned with textLength + lengthAdjust, so the caret
+    lands on the last glyph on every platform regardless of which monospace
+    font the browser actually resolved.
+  -->
   <style>
-    :root { color-scheme: dark light; }
-    .bg    { fill: #0d1117; }
-    .frame { fill: none; stroke: #30363d; stroke-width: 1; }
-    .dot   { fill: #30363d; }
-    .name  { font: 700 40px ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace; fill: #ffffff; letter-spacing: 2px; }
-    .sub   { font: 400 15px ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace; fill: #8b949e; letter-spacing: 1px; }
-    .cmd   { font: 400 14px ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace; fill: #c9d1d9; }
-    .muted { font: 400 14px ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace; fill: #6e7681; }
+    .bg     { fill: #0d1117 }
+    .frame  { fill: none; stroke: #30363d; stroke-width: 1 }
+    .gdot   { fill: #30363d }
+    .chrome { fill: #6e7681 }
+    .dot    { fill: #30363d }
+    .rule   { stroke: #21262d; stroke-width: 1 }
+    .name   { font: 700 42px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+              fill: #f0f6fc; letter-spacing: 1.5px }
+    .sub    { font: 400 14px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+              fill: #8b949e; letter-spacing: 1.4px }
+    .pr     { font: 400 14px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+              fill: #3fb950 }
+    .cmd    { font: 400 14px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+              fill: #e6edf3 }
+    .out    { font: 400 14px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+              fill: #8b949e }
+    .ok     { fill: #3fb950 }
+    .acc    { fill: #58a6ff }
+    .tiny   { font: 400 12px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+              fill: #6e7681 }
+    .caret  { fill: #58a6ff }
+    .trace  { fill: none; stroke: #58a6ff; stroke-width: 2; stroke-linecap: round;
+              stroke-dasharray: 150 2422 }
+    .sweepbar { fill: #58a6ff }
 
     @media (prefers-color-scheme: light) {
-      .bg    { fill: #ffffff; }
-      .frame { stroke: #d0d7de; }
-      .dot   { fill: #d0d7de; }
-      .name  { fill: #1f2328; }
-      .sub   { fill: #656d76; }
-      .cmd   { fill: #1f2328; }
-      .muted { fill: #8c959f; }
+      .bg     { fill: #ffffff }
+      .frame  { stroke: #d0d7de }
+      .gdot   { fill: #d8dee4 }
+      .chrome { fill: #8c959f }
+      .dot    { fill: #d0d7de }
+      .rule   { stroke: #eaeef2 }
+      .name   { fill: #1f2328 }
+      .sub    { fill: #656d76 }
+      .pr     { fill: #1a7f37 }
+      .cmd    { fill: #1f2328 }
+      .out    { fill: #656d76 }
+      .ok     { fill: #1a7f37 }
+      .acc    { fill: #0969da }
+      .tiny   { fill: #8c959f }
+      .caret  { fill: #0969da }
+      .trace  { stroke: #0969da }
+      .sweepbar { fill: #0969da }
+      .sA, .sB, .sD, .sE { stop-color: #0969da }
+      .sC { stop-color: #218bff }
     }
 
-    /* cursor blinks and travels with the typed line */
-    .cursor { animation: blink 1.05s steps(1) infinite, caret 3.5s linear infinite; }
-    @keyframes blink { 0%,49% { opacity: 1 } 50%,100% { opacity: 0 } }
-    @keyframes caret {
-      0%   { transform: translateX(0) }
-      24%  { transform: translateX(432px) }
-      94%  { transform: translateX(432px) }
-      100% { transform: translateX(0) }
-    }
+    /* ---- one-time entrance ------------------------------------------- */
+    .boot { animation: boot .8s cubic-bezier(.2,.8,.2,1) both }
+    @keyframes boot { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: translateY(0) } }
+    .boot2 { animation: boot .8s cubic-bezier(.2,.8,.2,1) .16s both }
+    .boot3 { animation: boot .8s cubic-bezier(.2,.8,.2,1) .3s both }
 
-    /* typed line reveal — each line wipes in, holds, then the next follows */
-    .type { animation: wipe 14s linear infinite; }
-    @keyframes wipe {
-      0%    { width: 0 }
-      6%    { width: 470px }
-      30%   { width: 470px }
-      33%   { width: 0 }
-      100%  { width: 0 }
-    }
-    #l1 { animation-delay: 0s; }
-    #l2 { animation-delay: 3.5s; }
-    #l3 { animation-delay: 7s; }
-    #l4 { animation-delay: 10.5s; }
+    /* ---- ambient loops ------------------------------------------------ */
+    .drift { animation: drift 18s linear infinite }
+    @keyframes drift { to { transform: translate(26px, 26px) } }
 
-    /* scanning sweep across the rule */
-    .sweep { animation: sweep 6s ease-in-out infinite; }
+    .trace { animation: trace 9s linear infinite }
+    @keyframes trace { to { stroke-dashoffset: -2572 } }
+
+    .sweepbar { animation: sweep 4.5s ease-in-out infinite }
     @keyframes sweep {
       0%   { transform: translateX(0);   opacity: 0 }
-      15%  { opacity: 1 }
-      85%  { opacity: 1 }
+      12%  { opacity: .85 }
+      88%  { opacity: .85 }
       100% { transform: translateX(700px); opacity: 0 }
     }
 
-    /* slow pulse on the status dot */
-    .live { animation: pulse 2.4s ease-in-out infinite; }
-    @keyframes pulse { 0%,100% { opacity: .25 } 50% { opacity: 1 } }
+    .shine { animation: shine 6s cubic-bezier(.65,0,.35,1) infinite }
+    @keyframes shine {
+      0%, 14%  { transform: translateX(-250px) }
+      58%,100% { transform: translateX(450px) }
+    }
+
+    .live { animation: pulse 2.25s ease-in-out infinite }
+    @keyframes pulse { 0%,100% { opacity: .35; r: 3.5px } 50% { opacity: 1; r: 4.5px } }
+
+    .ring { animation: ring 2.25s ease-out infinite }
+    @keyframes ring {
+      0%   { transform: scale(.6); opacity: .55 }
+      100% { transform: scale(2.6); opacity: 0 }
+    }
+
+    /* ---- the 18s session --------------------------------------------- */
+    .session { animation: session 18s linear infinite }
+    @keyframes session { 0%, 86.11% { opacity: 1 } 91.11%, 100% { opacity: 0 } }
+
+    /* typing reveals: width baked per line, stepped one glyph at a time */
+    .k1, .k2, .k3 { animation-duration: 18s; animation-timing-function: linear; animation-iteration-count: infinite }
+    .k1 { animation-name: k1 } .k2 { animation-name: k2 } .k3 { animation-name: k3 }
+
+    @keyframes k1 {
+      0%,   2.78% { width: 0;     animation-timing-function: steps(28, end) }
+      9.44%, 92.78% { width: 235px }
+      92.79%, 100%  { width: 0 }
+    }
+    @keyframes k2 {
+      0%,   13.89% { width: 0;     animation-timing-function: steps(32, end) }
+      21.67%, 92.78% { width: 269px }
+      92.79%, 100%   { width: 0 }
+    }
+    @keyframes k3 {
+      0%,   26.11% { width: 0;     animation-timing-function: steps(35, end) }
+      32.78%, 92.78% { width: 294px }
+      92.79%, 100%   { width: 0 }
+    }
+
+    /* prompts appear a beat before their line is typed */
+    .p1, .p2, .p3, .p4, .o1, .o2, .o3 { animation-duration: 18s; animation-timing-function: linear; animation-iteration-count: infinite }
+    .p1 { animation-name: p1 } .p2 { animation-name: p2 } .p3 { animation-name: p3 } .p4 { animation-name: p4 }
+    @keyframes p1 { 0%, 2.21% { opacity: 0 } 2.22%, 92.78% { opacity: 1 } 92.79%, 100% { opacity: 0 } }
+    @keyframes p2 { 0%, 13.32% { opacity: 0 } 13.33%, 92.78% { opacity: 1 } 92.79%, 100% { opacity: 0 } }
+    @keyframes p3 { 0%, 25.55% { opacity: 0 } 25.56%, 92.78% { opacity: 1 } 92.79%, 100% { opacity: 0 } }
+    @keyframes p4 { 0%, 36.66% { opacity: 0 } 36.67%, 92.78% { opacity: 1 } 92.79%, 100% { opacity: 0 } }
+
+    /* output prints all at once, the way real output does */
+    .o1 { animation-name: o1 } .o2 { animation-name: o2 } .o3 { animation-name: o3 }
+    @keyframes o1 {
+      0%, 11.11%   { opacity: 0; transform: translateY(5px) }
+      12.5%, 92.78% { opacity: 1; transform: translateY(0) }
+      92.79%, 100%  { opacity: 0; transform: translateY(5px) }
+    }
+    @keyframes o2 {
+      0%, 23.33%   { opacity: 0; transform: translateY(5px) }
+      24.7%, 92.78% { opacity: 1; transform: translateY(0) }
+      92.79%, 100%  { opacity: 0; transform: translateY(5px) }
+    }
+    @keyframes o3 {
+      0%, 34.44%   { opacity: 0; transform: translateY(5px) }
+      35.8%, 92.78% { opacity: 1; transform: translateY(0) }
+      92.79%, 100%  { opacity: 0; transform: translateY(5px) }
+    }
+
+    /* the caret walks the session: steps across each line, then drops a row */
+    .caretwrap { animation: caretshow 18s linear infinite }
+    @keyframes caretshow { 0%, 2.71% { opacity: 0 } 2.78%, 86.11% { opacity: 1 } 91.11%, 100% { opacity: 0 } }
+
+    .caretmove { animation: caretmove 18s linear infinite }
+    @keyframes caretmove {
+      0%      { transform: translate(0,0);        animation-timing-function: steps(1, end) }
+      2.78%   { transform: translate(0,0);        animation-timing-function: steps(28, end) }
+      9.44%   { transform: translate(235px,0);    animation-timing-function: steps(1, end) }
+      13.89%  { transform: translate(0,48px);     animation-timing-function: steps(32, end) }
+      21.67%  { transform: translate(269px,48px); animation-timing-function: steps(1, end) }
+      26.11%  { transform: translate(0,96px);     animation-timing-function: steps(35, end) }
+      32.78%  { transform: translate(294px,96px); animation-timing-function: steps(1, end) }
+      36.67%  { transform: translate(0,144px) }
+      100%    { transform: translate(0,144px) }
+    }
+
+    .blink { animation: blink 1.06s steps(1, end) infinite }
+    @keyframes blink { 0%, 54% { opacity: 1 } 55%, 100% { opacity: 0 } }
+
+    /* status line cycles three phrases with a hard gap between them —
+       never two visible at once, even mid-transition */
+    .s1, .s2, .s3 { animation-duration: 18s; animation-timing-function: linear; animation-iteration-count: infinite }
+    .s1 { animation-name: s1 } .s2 { animation-name: s2 } .s3 { animation-name: s3 }
+    @keyframes s1 { 0% { opacity: 0 } 3%, 29% { opacity: 1 } 32%, 100% { opacity: 0 } }
+    @keyframes s2 { 0%, 33% { opacity: 0 } 36%, 62% { opacity: 1 } 65%, 100% { opacity: 0 } }
+    @keyframes s3 { 0%, 66% { opacity: 0 } 69%, 95% { opacity: 1 } 98%, 100% { opacity: 0 } }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important }
+      .k1 { width: 235px } .k2 { width: 269px } .k3 { width: 294px }
+      .caretwrap, .p1, .p2, .p3, .p4, .o1, .o2, .o3, .s1 { opacity: 1 }
+      .s2, .s3, .sweepbar, .shine { opacity: 0 }
+      .caretmove { transform: translate(0,144px) }
+    }
   </style>
 
-  <rect class="bg" width="860" height="220" rx="10"/>
-  <rect class="frame" x="0.5" y="0.5" width="859" height="219" rx="10"/>
+  <defs>
+    <clipPath id="card"><rect width="900" height="400" rx="14"/></clipPath>
+    <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle class="gdot" cx="1" cy="1" r="1"/>
+    </pattern>
+    <clipPath id="nameclip">
+      <text class="name" x="32" y="120">nabaskar brahma</text>
+    </clipPath>
+    <linearGradient id="shineGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop class="sA" offset="0"    stop-color="#58a6ff" stop-opacity="0"/>
+      <stop class="sB" offset=".45"  stop-color="#58a6ff" stop-opacity=".55"/>
+      <stop class="sC" offset=".5"   stop-color="#79c0ff" stop-opacity=".9"/>
+      <stop class="sD" offset=".55"  stop-color="#58a6ff" stop-opacity=".55"/>
+      <stop class="sE" offset="1"    stop-color="#58a6ff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect class="bg" width="900" height="400" rx="14"/>
+
+  <g clip-path="url(#card)">
+    <!-- drifting dot grid, oversized so the 26px loop is seamless -->
+    <g class="drift"><rect x="-52" y="-52" width="1004" height="504" fill="url(#grid)" opacity=".55"/></g>
+    <!-- light running the perimeter -->
+    <rect class="trace" x="1" y="1" width="898" height="398" rx="14"/>
+  </g>
+
+  <rect class="frame" x=".5" y=".5" width="899" height="399" rx="14"/>
 
   <!-- window chrome -->
-  <circle class="dot" cx="26" cy="26" r="5"/>
-  <circle class="dot" cx="44" cy="26" r="5"/>
-  <circle class="dot" cx="62" cy="26" r="5"/>
-  <text class="muted" x="84" y="31" font-size="12">~/nabrahma</text>
-
-  <!-- name -->
-  <text class="name" x="30" y="88">nabaskar brahma</text>
-  <text class="sub"  x="32" y="112">backend · distributed systems · infrastructure security</text>
-
-  <!-- animated rule with sweep -->
-  <line x1="30" y1="130" x2="830" y2="130" stroke="#30363d" stroke-width="1"/>
-  <g class="sweep">
-    <rect x="30" y="129" width="110" height="2" fill="#ffffff" opacity="0.55"/>
+  <g class="boot">
+    <circle class="dot" cx="28" cy="30" r="5.5"/>
+    <circle class="dot" cx="47" cy="30" r="5.5"/>
+    <circle class="dot" cx="66" cy="30" r="5.5"/>
+    <text class="tiny" x="88" y="34">~/nabrahma &#8212; zsh</text>
+    <text class="tiny" x="868" y="34" text-anchor="end">main</text>
+    <line class="rule" x1="0" y1="56" x2="900" y2="56"/>
   </g>
 
-  <!-- terminal lines: each masked by a growing rect -->
-  <g>
-    <clipPath id="c1"><rect id="l1" class="type" x="52" y="146" height="18" width="0"/></clipPath>
-    <clipPath id="c2"><rect id="l2" class="type" x="52" y="146" height="18" width="0"/></clipPath>
-    <clipPath id="c3"><rect id="l3" class="type" x="52" y="146" height="18" width="0"/></clipPath>
-    <clipPath id="c4"><rect id="l4" class="type" x="52" y="146" height="18" width="0"/></clipPath>
-
-    <text class="muted" x="30" y="160">$</text>
-    <g clip-path="url(#c1)"><text class="cmd" x="52" y="160">go build ./... &amp;&amp; kubectl apply -f driftcheck.yaml</text></g>
-    <g clip-path="url(#c2)"><text class="cmd" x="52" y="160">seccomp: compiled 1 filter per tool, by subtraction</text></g>
-    <g clip-path="url(#c3)"><text class="cmd" x="52" y="160">soak: 5,388,510 events · 0 dropped · 13 goroutines</text></g>
-    <g clip-path="url(#c4)"><text class="cmd" x="52" y="160">detection 84.6% · false positives 25-50% (published)</text></g>
-    <rect class="cursor" x="54" y="148" width="8" height="14" fill="#8b949e"/>
+  <!-- name, with a light sweeping through the glyphs -->
+  <g class="boot2">
+    <text class="name" x="32" y="120">nabaskar brahma</text>
+    <g clip-path="url(#nameclip)">
+      <g class="shine">
+        <rect x="0" y="78" width="220" height="56" fill="url(#shineGrad)"/>
+      </g>
+    </g>
+    <text class="sub" x="34" y="146">backend &#183; distributed systems &#183; the parts that fail quietly</text>
   </g>
 
-  <!-- status strip -->
-  <g transform="translate(30,192)">
-    <circle class="live" cx="4" cy="-4" r="4" fill="#3fb950"/>
-    <text class="muted" x="18" y="0">systems online</text>
-    <text class="muted" x="150" y="0">·</text>
-    <text class="muted" x="170" y="0">go · python · kubernetes · seccomp</text>
-    <text class="muted" x="470" y="0">·</text>
-    <text class="muted" x="490" y="0">0 claims without caveats</text>
+  <!-- rule with a scanning bar -->
+  <g class="boot3">
+    <line class="rule" x1="32" y1="172" x2="868" y2="172"/>
+    <g clip-path="url(#card)">
+      <rect class="sweepbar" x="32" y="171" width="120" height="2"/>
+    </g>
+  </g>
+
+  <!-- terminal session: every line owns its own row -->
+  <g class="session">
+    <defs>
+      <clipPath id="c1"><rect class="k1" x="56" y="190" height="20" width="0"/></clipPath>
+      <clipPath id="c2"><rect class="k2" x="56" y="238" height="20" width="0"/></clipPath>
+      <clipPath id="c3"><rect class="k3" x="56" y="286" height="20" width="0"/></clipPath>
+    </defs>
+
+    <!-- pair 1 -->
+    <text class="pr p1" x="34" y="204">$</text>
+    <g clip-path="url(#c1)">
+      <text class="cmd" x="56" y="204" textLength="235" lengthAdjust="spacingAndGlyphs">go test ./... -race -count=3</text>
+    </g>
+    <g class="o1">
+      <text class="out" x="56" y="228" textLength="504" lengthAdjust="spacingAndGlyphs"><tspan class="ok">ok</tspan>  driftwatch  5,388,510 events &#183; 0 dropped &#183; 13 goroutines</text>
+    </g>
+
+    <!-- pair 2 -->
+    <text class="pr p2" x="34" y="252">$</text>
+    <g clip-path="url(#c2)">
+      <text class="cmd" x="56" y="252" textLength="269" lengthAdjust="spacingAndGlyphs">mcp-ztgateway verify ./fs-server</text>
+    </g>
+    <g class="o2">
+      <text class="out" x="56" y="276" textLength="487" lengthAdjust="spacingAndGlyphs"><tspan class="acc">503/503</tspan> verdicts identical across 5 runs &#183; 84.6% detection</text>
+    </g>
+
+    <!-- pair 3 -->
+    <text class="pr p3" x="34" y="300">$</text>
+    <g clip-path="url(#c3)">
+      <text class="cmd" x="56" y="300" textLength="294" lengthAdjust="spacingAndGlyphs">shortcircuit replay --confirm-fills</text>
+    </g>
+    <g class="o3">
+      <text class="out" x="56" y="324" textLength="445" lengthAdjust="spacingAndGlyphs"><tspan class="acc">89</tspan> order IDs recovered &#183; payload nesting defect fixed</text>
+    </g>
+
+    <!-- waiting prompt -->
+    <text class="pr p4" x="34" y="348">$</text>
+
+    <g class="caretwrap">
+      <g class="caretmove">
+        <rect class="caret blink" x="56" y="192" width="9" height="16" rx="1"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- status strip.
+       The positioning transform lives on the outer <g> and the animation on an
+       inner one: a CSS transform in @keyframes replaces the SVG transform
+       attribute outright, so sharing one element drops the strip at (0,0). -->
+  <g transform="translate(32,378)">
+   <g class="boot3">
+    <g>
+      <circle class="ring" fill="none" stroke="#3fb950" stroke-width="1.2" cx="4" cy="-4" r="4"
+              style="transform-box: fill-box; transform-origin: center"/>
+      <circle class="live" cx="4" cy="-4" r="4" fill="#3fb950"/>
+    </g>
+    <text class="tiny s1" x="20" y="0">go &#183; python &#183; kubernetes &#183; seccomp &#183; postgres</text>
+    <text class="tiny s2" x="20" y="0">17 merged upstream &#183; 3 projects &#183; still counting</text>
+    <text class="tiny s3" x="20" y="0">started in game dev &#183; still where I go to play</text>
+    <text class="tiny" x="836" y="0" text-anchor="end">github.com/nabrahma</text>
+   </g>
   </g>
 </svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="14" viewBox="0 0 900 14"
+     role="presentation" aria-hidden="true">
+  <style>
+    .base { stroke: #21262d; stroke-width: 1 }
+    .lead { fill: url(#rg) }
+    .node { fill: #58a6ff }
+    @media (prefers-color-scheme: light) {
+      .base { stroke: #eaeef2 }
+      .node { fill: #0969da }
+      .rA, .rC { stop-color: #0969da } .rB { stop-color: #218bff }
+    }
+    .run { animation: run 7s cubic-bezier(.45,0,.55,1) infinite }
+    @keyframes run {
+      0%       { transform: translateX(-180px); opacity: 0 }
+      10%      { opacity: 1 }
+      88%      { opacity: 1 }
+      100%     { transform: translateX(900px); opacity: 0 }
+    }
+    @media (prefers-reduced-motion: reduce) { .run { display: none } }
+  </style>
+  <defs>
+    <linearGradient id="rg" x1="0" y1="0" x2="1" y2="0">
+      <stop class="rA" offset="0"  stop-color="#58a6ff" stop-opacity="0"/>
+      <stop class="rB" offset=".8" stop-color="#58a6ff" stop-opacity=".9"/>
+      <stop class="rC" offset="1"  stop-color="#79c0ff" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <line class="base" x1="0" y1="7" x2="900" y2="7"/>
+  <g class="run">
+    <rect class="lead" x="0" y="6.2" width="170" height="1.6" rx=".8"/>
+    <circle class="node" cx="170" cy="7" r="2.2"/>
+  </g>
+</svg>
