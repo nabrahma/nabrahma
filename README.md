@@ -1,292 +1,161 @@
 <div align="center">
 
-<pre>
-<b>██▄   ██   ▄█▀█▄   ██▀▀▀▀▀█▄ ██▀▀▀▀▀█▄   ▄█▀█▄   ██     ██ ██▄   ▄██   ▄█▀█▄
-██▀█▄ ██ ▄█▀   ▀█▄ ██▄▄▄▄▄█▀ ██▄▄▄▄▄█▀ ▄█▀   ▀█▄ ██▄▄▄▄▄██ ██▀█▄█▀██ ▄█▀   ▀█▄
-██  ▀███ ██▀▀▀▀▀██ ██     ██ ██   ▀█▄  ██▀▀▀▀▀██ ██     ██ ██     ██ ██▀▀▀▀▀██
-▀▀    ▀▀ ▀▀     ▀▀ ▀▀▀▀▀▀▀▀  ▀▀     ▀▀ ▀▀     ▀▀ ▀▀     ▀▀ ▀▀     ▀▀ ▀▀     ▀▀</b>
-</pre>
-
-<img src="https://readme-typing-svg.demolab.com?font=Press+Start+2P&size=12&pause=900&color=FFFFFF&center=true&vCenter=true&width=780&height=55&lines=%3E+BACKEND+%2F%2F+DISTRIBUTED+SYSTEMS+%2F%2F+INFRA+SECURITY;%3E+GO+%2B+KUBERNETES+%2F%2F+PYTHON+%2B+ASYNCIO;%3E+SECCOMP+%2F%2F+NAMESPACES+%2F%2F+CGROUPS;%3E+I+BUILD+SYSTEMS+THAT+ADMIT+WHEN+THEY+LIE" />
+<img src="https://raw.githubusercontent.com/nabrahma/nabrahma/main/assets/header.svg" width="100%" alt="nabaskar brahma — backend, distributed systems, infrastructure security" />
 
 <br/>
 
-<a href="https://nabaskarbrahma.vercel.app/"><img src="https://img.shields.io/badge/PORTFOLIO-0d1117?style=for-the-badge&logo=vercel&logoColor=ffffff&labelColor=0d1117" /></a>
-<a href="https://www.linkedin.com/in/nabaskar/"><img src="https://img.shields.io/badge/LINKEDIN-0d1117?style=for-the-badge&logo=linkedin&logoColor=ffffff&labelColor=0d1117" /></a>
-<a href="mailto:nabaskarforcode99@gmail.com"><img src="https://img.shields.io/badge/MAIL-0d1117?style=for-the-badge&logo=maildotru&logoColor=ffffff&labelColor=0d1117" /></a>
-<a href="https://nabaskarbrahma.itch.io/"><img src="https://img.shields.io/badge/ITCH.IO-0d1117?style=for-the-badge&logo=itchdotio&logoColor=ffffff&labelColor=0d1117" /></a>
-<img src="https://komarev.com/ghpvc/?username=nabrahma&style=for-the-badge&color=8b949e&label=PINGS" />
-
-<pre>
-▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄
-</pre>
+[![Portfolio](https://img.shields.io/badge/portfolio-0d1117?style=flat-square&logo=vercel&logoColor=white&labelColor=0d1117)](https://nabaskarbrahma.vercel.app/)
+[![LinkedIn](https://img.shields.io/badge/linkedin-0d1117?style=flat-square&logo=linkedin&logoColor=white&labelColor=0d1117)](https://www.linkedin.com/in/nabaskar/)
+[![Email](https://img.shields.io/badge/email-0d1117?style=flat-square&logo=maildotru&logoColor=white&labelColor=0d1117)](mailto:nabaskarforcode99@gmail.com)
+[![itch.io](https://img.shields.io/badge/itch.io-0d1117?style=flat-square&logo=itchdotio&logoColor=white&labelColor=0d1117)](https://nabaskarbrahma.itch.io/)
 
 </div>
 
-## ▓▒░ BOOT SEQUENCE ░▒▓
+<br/>
 
-```
-nabrahma@localhost:~$ ./init --verbose
+I work on the parts of a system that fail quietly — lock contention, event loops, isolation boundaries, and the measurements that are supposed to tell you when something is wrong.
 
-  [ OK ]  mounting /dev/kubernetes ....................... controller-runtime
-  [ OK ]  loading seccomp-bpf profiles ................... 1 filter per tool, by subtraction
-  [ OK ]  spawning asyncio supervisor ................... 5/5 tasks healthy
-  [ OK ]  attaching prometheus exporter ................. 48 metrics, 10 alert rules
-  [ OK ]  arming fault injection matrix ................. 60 rows, 20 consecutive passes
-  [WARN]  false positive rate ........................... 25-50%, varies per run
-  [WARN]  single-run dynamic analysis is a real limitation
-  [ OK ]  honesty daemon ................................ running (never disabled)
+Mostly **Go** and **Python**. Kubernetes operators, container sandboxing, and a live trading engine that places real orders. I test hard, and I publish my false-positive rates.
 
-  >> system online. 4 modules loaded. 0 claims without caveats.
+<br/>
 
-nabrahma@localhost:~$ _
-```
+## Open source
 
 <div align="center">
-<pre>
-░░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓████████████▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░
-</pre>
+
+<img src="https://raw.githubusercontent.com/nabrahma/nabrahma/main/assets/oss.svg" width="72%" alt="open source contribution stats" />
+
 </div>
 
-## ▓▒░ CORE ARCHITECTURE ░▒▓
+<br/>
 
-```mermaid
-flowchart TB
-    A["CONCURRENCY<br/>correctness"]:::bright
-    B["ISOLATION<br/>at the kernel"]:::bright
-    C["MEASUREMENT<br/>you can audit"]:::bright
+The four upstream fixes I'd defend in an interview — each one a bug that was invisible until it wasn't.
 
-    A --> A1["goroutine lifecycles<br/>lock contention<br/>asyncio supervision"]:::dim
-    B --> B1["seccomp-BPF · namespaces<br/>cgroups · distroless<br/>signed images · SBOMs"]:::dim
-    C --> C1["prometheus · grafana<br/>soak · fuzz · fault matrix<br/>caveats beside claims"]:::dim
+<table>
+<tr>
+<td width="34%"><b><a href="https://github.com/volcano-sh/kthena/pull/1297">kthena #1297</a></b><br/><sub>lock convoy in the fairness queue</sub></td>
+<td>The sliding-window token tracker dropped its <code>RLock</code> and took an <b>exclusive</b> lock on the <i>read</i> path, to lazily GC expired buckets. Under concurrency, every reader stampeded the same mutex the moment a bucket expired — periodic P99 spikes with no obvious cause. Moved GC to the write path and made reads advance a local <code>startIdx</code> past the cutoff, so reads never mutate the slice and never need the exclusive lock.</td>
+</tr>
+<tr>
+<td><b><a href="https://github.com/volcano-sh/kthena/pull/1255">kthena #1255</a></b><br/><sub>O(N) blocking scrape → bounded parallel</sub></td>
+<td>The background metrics scraper did one blocking HTTP GET per pod, sequentially. A handful of unresponsive pods stalled the entire loop and staled metrics for <i>every</i> pod in the cluster. Rewrote it with a <code>sync.WaitGroup</code> and a 100-slot semaphore channel, with context cancellation checked inside the <code>Range</code>.</td>
+</tr>
+<tr>
+<td><b><a href="https://github.com/volcano-sh/kthena/pull/1530">kthena #1530</a></b><br/><sub>regex recompiled on every request</sub></td>
+<td><code>matchString</code> called <code>regexp.MatchString</code>, recompiling the pattern on <b>every request</b> — once per header matcher, plus once for the URI. Memoised compiled patterns in a <code>sync.Map</code> keyed by pattern, bounded by CR count rather than traffic, caching compile failures too. <b>~50,000 ns/op → ~820 ns/op; 250 allocs/op → near zero.</b></td>
+</tr>
+<tr>
+<td><b><a href="https://github.com/volcano-sh/kthena/pull/1243">kthena #1243</a></b><br/><sub>1,000+ goroutines from one request</sub></td>
+<td>The LRU eviction callback spawned a goroutine per evicted hash — a single 8k-token request spawned over a thousand instantly. The <code>go</code> was a legacy deadlock workaround; it stopped being necessary once <code>podLRU.Add()</code> moved after <code>shard.mu.Unlock()</code>. Two-line fix, but only after verifying the lock ordering that made it safe.</td>
+</tr>
+</table>
 
-    A1 --> CORE
-    B1 --> CORE
-    C1 --> CORE
+<sub>Also merged: a repo-wide Go 1.26 upgrade in kthena, a <a href="https://github.com/kubernetes-sigs/headlamp/pull/6066">rules-of-hooks fix in kubernetes-sigs/headlamp</a> that removed four eslint suppressions hiding it, and <a href="https://github.com/openfoodfacts/openfoodfacts-explorer/pulls?q=is%3Apr+author%3Anabrahma+is%3Amerged">8 a11y and responsive fixes</a> in Open Food Facts. → <a href="https://github.com/pulls?q=is%3Apr+author%3Anabrahma+is%3Amerged">all merged PRs</a></sub>
 
-    CORE{"SHIPPED SYSTEMS"}:::hub
+<br/>
 
-    CORE --> O1["trading engine"]:::out
-    CORE --> O2["consistency auditor"]:::out
-    CORE --> O3["zero-trust gateway"]:::out
+## Projects
 
-    classDef bright fill:#161b22,stroke:#ffffff,stroke-width:3px,color:#ffffff
-    classDef dim fill:#0d1117,stroke:#30363d,stroke-width:1px,color:#8b949e
-    classDef hub fill:#ffffff,stroke:#ffffff,stroke-width:3px,color:#0d1117
-    classDef out fill:#0d1117,stroke:#8b949e,stroke-width:2px,color:#c9d1d9
-```
+<details>
+<summary><b>ShortCircuit</b> — live algorithmic trading engine &nbsp;·&nbsp; <code>python · asyncio · postgres</code></summary>
 
-<div align="center">
-<pre>
-████▓▓▓▓▒▒▒▒░░░░                                                    ░░░░▒▒▒▒▓▓▓▓████
-</pre>
-</div>
+<br/>
 
-## ▓▒░ MODULES LOADED ░▒▓
+Places real orders on NSE equities through Fyers API v3. 14.8K LOC across 42 modules.
 
-<details open>
-<summary><code>[01]</code> <b>SHORTCIRCUIT</b> &nbsp;·&nbsp; live trading engine &nbsp;·&nbsp; <code>python · asyncio · postgres · docker</code></summary>
-
-```
-  TARGET    NSE equities via Fyers API v3 - real money, real fills
-  SCALE     14.8K LOC / 42 modules / 1 event loop / 5 supervised tasks
-
-  PIPELINE  WS cache -> hybrid -> REST fallback, behind a sliding-window limiter
-            enforcing 10/sec + 200/min + 100K/day simultaneously, with a reserved
-            priority lane so stop-loss cannot queue behind scanner traffic
-
-  BUG       a WebSocket payload-nesting defect had silently prevented EVERY order
-            fill from ever being confirmed. zero fills logged. for months.
-
-  FIX       replayed recorded production traffic through the handlers and
-            recovered 89 order IDs from logs that previously yielded nothing
-
-  GUARD     248 tests, 100% branch coverage on order decisions, plus an AST test
-            that FAILS THE BUILD if a strategy module imports anything with I/O
-```
+- One asyncio event loop supervising five concurrent tasks, with crash-loop cutoff and ordered shutdown
+- Three-tier data pipeline behind a sliding-window limiter enforcing 10/sec, 200/min and 100K/day simultaneously, with a reserved priority lane so stop-loss never queues behind scanner traffic
+- Found a WebSocket payload-nesting defect that had silently prevented *every* order fill from being confirmed — recovered 89 order IDs from logs that previously yielded zero
+- 248 tests, 100% branch coverage on order decisions, plus an AST test that fails the build if a strategy module imports anything with I/O
 
 </details>
 
 <details>
-<summary><code>[02]</code> <b>DRIFTWATCH</b> &nbsp;·&nbsp; distributed consistency auditor &nbsp;·&nbsp; <code>go · kubernetes · redis · zeromq</code></summary>
+<summary><b>Driftwatch</b> — distributed consistency auditor &nbsp;·&nbsp; <code>go · kubernetes · redis · zeromq</code></summary>
 
-```
-  PURPOSE   detect SILENT divergence between an event stream and its derived
-            Redis store, by rebuilding expected state as an independent 3rd consumer
+<br/>
 
-  PROBLEM   8% false positives at 2,000 events/sec - the tool blaming the system
-            for event loss the tool itself caused
+Detects silent divergence between an event stream and its derived Redis store by rebuilding expected state as an independent third consumer.
 
-  SOLVED    settlement window derived from MEASURED propagation lag, two-phase
-            confirmation with version fencing, and trust states that classify
-            self-inflicted loss as "suspect" rather than "drift"
-
-  OPERATOR  controller-runtime + kubebuilder: CRD, validating/defaulting webhooks,
-            leader election, finalizers. Helm chart + Grafana + 10 alert rules.
-
-  BENCH     1M redis keys swept .......... 5.68s    (target: 10s)
-            1M keys invalidated .......... 1.11us   (generation counter)
-            60-min soak .................. 5,388,510 events / 0 dropped
-            goroutines ................... flat 13, no growth
-            coverage ..................... 91.6% across 10 test levels
-```
+- Cut an 8% false-positive rate at 2,000 events/sec using a settlement window derived from measured propagation lag, two-phase confirmation with version fencing, and trust states that classify self-inflicted loss as *suspect* rather than *drift*
+- Kubernetes operator on controller-runtime: CRD, validating and defaulting webhooks, leader election, finalizers; Helm chart, Grafana dashboard, 10 alert rules over 48 metrics
+- 1M Redis keys swept in 5.68s · 5.3M events with zero drops across a 60-minute soak · flat 13 goroutines
+- 91.6% coverage across 10 test levels — property-based, fuzzing, a 60-row fault matrix, Kind-based e2e
 
 </details>
 
 <details>
-<summary><code>[03]</code> <b>MCP ZERO-TRUST GATEWAY</b> &nbsp;·&nbsp; kernel confinement for AI agents &nbsp;·&nbsp; <code>python · seccomp · docker · fastapi</code> &nbsp;·&nbsp; <a href="https://pypi.org/project/mcp-ztgateway/">PyPI</a></summary>
+<summary><b>MCP Zero-Trust Gateway</b> — kernel confinement for AI agent tools &nbsp;·&nbsp; <code>python · seccomp · docker</code> &nbsp;·&nbsp; <a href="https://pypi.org/project/mcp-ztgateway/">PyPI</a></summary>
 
-```
-  THESIS    an AI tool server's self-description is written by the attacker.
-            treat it as untrusted input. declare -> verify -> confine.
+<br/>
 
-  VERIFY    profile the server under strace -f -yy -ttt inside a
-            --cap-drop ALL --read-only container, map syscalls to a capability
-            vocabulary, DENY anything the declaration does not cover
+Treats a tool server's self-description as untrusted. Declare, verify, confine.
 
-  CONFINE   per-tool seccomp-BPF filters derived BY SUBTRACTION from the verified
-            verdict + network namespaces + bind mounts + CONNECT allow-list proxy
-            + optional Landlock. the filter must survive a real handshake, or the
-            gateway degrades a tier AND RECORDS THAT IT DID.
-
-  CONFESS   an earlier build reported 100% success. it was two measurement bugs
-            cancelling out: a seccomp compiler that stopped every container
-            booting, and a harness that scored those crashes as defences.
-
-  REBUILT   crashes now score INCONCLUSIVE and stay in the denominator. every
-            defence must name its enforcing layer. detection and containment are
-            never merged into one number. the honest figure is 84.6%.
-```
+- Profiles each server under `strace` in a `--cap-drop ALL --read-only` container, maps observed syscalls to a capability vocabulary, and denies anything the declaration doesn't cover
+- Compiles per-tool seccomp-BPF filters by subtraction from the verified verdict, enforced alongside network namespaces, bind mounts and a CONNECT allow-list proxy
+- 84.6% detection at a measured 25–50% false-positive rate, 87.5% containment, 503/503 identical verdicts across five clean runs
+- An earlier build reported 100%. It was two measurement bugs cancelling out. Rebuilding the methodology so that class of error can't hide again is the part I'd defend hardest.
 
 </details>
 
 <details>
-<summary><code>[04]</code> <b>GAMECODE</b> &nbsp;·&nbsp; sandboxed judge for game devs &nbsp;·&nbsp; <code>go · echo · postgres · nextjs</code></summary>
+<summary><b>GameCode</b> — sandboxed judge for game developers &nbsp;·&nbsp; <code>go · echo · postgres · nextjs</code></summary>
 
-```
-  SANDBOX   C++ / C# / Lua / GDScript in throwaway containers
-            no network · read-only rootfs · CPU + 256MB + 128-PID hard caps
-            8 verdict states from exit codes, runtime + peak memory read
-            straight from the cgroup (sub-millisecond accuracy)
+<br/>
 
-  API       44 endpoints, 9-package handler -> service -> repository layering
-            JWT + bcrypt, refresh tokens stored as SHA-256 hashes and retired
-            on every use, delivered over httpOnly cookies
+Competitive-programming platform running C++, C#, Lua and GDScript in throwaway containers.
 
-  BEFORE    a stubbed auth layer allowed user impersonation via request body
-  AFTER     RBAC middleware + dual RequireAuth/OptionalAuth so public content
-            stays cacheable while still personalising per user
-
-  CI        validator CLI runs 75 reference solutions against 136 test cases
-            every build - caught 6 latent defects incl. an int64 overflow
-```
+- No network, read-only rootfs, hard CPU / 256 MB / 128-PID caps; eight verdict states from exit codes, runtime and peak memory read from the cgroup
+- 44 endpoints in a 9-package handler → service → repository layering; JWT with rotating SHA-256-hashed refresh tokens over httpOnly cookies
+- A validator CLI runs 75 reference solutions against 136 test cases on every build — caught 6 latent defects including an int64 overflow
 
 </details>
 
-<div align="center">
-<pre>
-████▓▓▓▓▒▒▒▒░░░░                                                    ░░░░▒▒▒▒▓▓▓▓████
-</pre>
-</div>
+<br/>
 
-## ▓▒░ CRASH LOG // MERGED UPSTREAM ░▒▓
-
-<sub>shipped fixes in other people's codebases · every row links to the merged PR</sub>
-
-| SEV | REPO | SYMPTOM | ROOT CAUSE | PATCH |
-|:---:|:---|:---|:---|:---|
-| `P1` | [**kthena**](https://github.com/volcano-sh/kthena/pull/1243) | goroutine explosion | LRU eviction spawned one goroutine per hash - a single 8k-token request spawned 1,000+ | deleted a deadlock workaround that lock reordering had made obsolete |
-| `P2` | [**kthena**](https://github.com/volcano-sh/kthena/pull/1297) | periodic P99 latency spikes | token tracker took an **exclusive** lock on the *read* path to GC expired buckets | moved GC to the write path; reads never mutate the bucket slice |
-| `P2` | [**kthena**](https://github.com/volcano-sh/kthena/pull/1255) | cluster-wide stale metrics | one unresponsive pod stalled a sequential O(N) scrape loop | bounded 100-goroutine semaphore + context cancellation |
-| `P3` | [**kthena**](https://github.com/volcano-sh/kthena/pull/1244) | toolchain drift across repo | go.mod, 2 Dockerfiles, 2 CI workflows and docs all disagreed | repo-wide Go 1.26.4 upgrade, versioned docs left pinned on purpose |
-| `P3` | [**headlamp**](https://github.com/kubernetes-sigs/headlamp/pull/6066) | 4 eslint suppressions hiding a real bug | hooks called *after* an early return | hoisted the hooks, deleted all four suppressions |
-| `P3` | [**openfoodfacts**](https://github.com/openfoodfacts/openfoodfacts-explorer/pulls?q=is%3Apr+author%3Anabrahma+is%3Amerged) | screen readers announcing decorative images | missing `aria-hidden` on hero imagery | 8 merged fixes across a11y, responsive layout and i18n |
-
-<div align="center">
-<sub>full record → <a href="https://github.com/pulls?q=is%3Apr+author%3Anabrahma+is%3Amerged">all merged PRs</a></sub>
-</div>
-
-<div align="center">
-<pre>
-████▓▓▓▓▒▒▒▒░░░░                                                    ░░░░▒▒▒▒▓▓▓▓████
-</pre>
-</div>
-
-## ▓▒░ TELEMETRY ░▒▓
-
-```
-  UPSTREAM_MERGED   ████████████░░░░░░░░░░  13 merged / 24 opened
-  ISSUES_FILED      ██████████████████████  12 filed / 5 already closed
-  TEST_COVERAGE     ████████████████████░░  91.6%   driftwatch
-  BRANCH_COVERAGE   ██████████████████████  100%    shortcircuit / orders
-  THREAT_DETECTION  ███████████████████░░░  84.6%   mcp-ztgateway
-  CONTAINMENT       ███████████████████░░░  87.5%   mcp-ztgateway
-  FALSE_POSITIVES   ████████░░░░░░░░░░░░░░  25-50%  <- yes, I publish this one too
-```
+## Stack
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=nabrahma&show_icons=true&hide_border=true&bg_color=0d1117&title_color=ffffff&icon_color=8b949e&text_color=c9d1d9&count_private=true&include_all_commits=true" width="49%" />
-<img src="https://streak-stats.demolab.com?user=nabrahma&hide_border=true&background=0d1117&ring=ffffff&fire=ffffff&currStreakLabel=ffffff&sideLabels=c9d1d9&dates=8b949e&stroke=30363d&currStreakNum=ffffff&sideNums=ffffff" width="49%" />
+![Go](https://img.shields.io/badge/Go-0d1117?style=flat-square&logo=go&logoColor=white&labelColor=0d1117)
+![Python](https://img.shields.io/badge/Python-0d1117?style=flat-square&logo=python&logoColor=white&labelColor=0d1117)
+![C++](https://img.shields.io/badge/C++-0d1117?style=flat-square&logo=cplusplus&logoColor=white&labelColor=0d1117)
+![TypeScript](https://img.shields.io/badge/TypeScript-0d1117?style=flat-square&logo=typescript&logoColor=white&labelColor=0d1117)
+![Bash](https://img.shields.io/badge/Bash-0d1117?style=flat-square&logo=gnubash&logoColor=white&labelColor=0d1117)
 
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=nabrahma&layout=compact&hide_border=true&bg_color=0d1117&title_color=ffffff&text_color=c9d1d9&langs_count=8&hide=html,css" width="42%" />
+![Kubernetes](https://img.shields.io/badge/Kubernetes-0d1117?style=flat-square&logo=kubernetes&logoColor=white&labelColor=0d1117)
+![Docker](https://img.shields.io/badge/Docker-0d1117?style=flat-square&logo=docker&logoColor=white&labelColor=0d1117)
+![Linux](https://img.shields.io/badge/Linux-0d1117?style=flat-square&logo=linux&logoColor=white&labelColor=0d1117)
+![Prometheus](https://img.shields.io/badge/Prometheus-0d1117?style=flat-square&logo=prometheus&logoColor=white&labelColor=0d1117)
+![Grafana](https://img.shields.io/badge/Grafana-0d1117?style=flat-square&logo=grafana&logoColor=white&labelColor=0d1117)
+![GitHub Actions](https://img.shields.io/badge/Actions-0d1117?style=flat-square&logo=githubactions&logoColor=white&labelColor=0d1117)
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=nabrahma&hide_border=true&area=true&bg_color=0d1117&color=ffffff&line=8b949e&point=ffffff&area_color=30363d&title_color=ffffff" width="98%" />
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-0d1117?style=flat-square&logo=postgresql&logoColor=white&labelColor=0d1117)
+![Redis](https://img.shields.io/badge/Redis-0d1117?style=flat-square&logo=redis&logoColor=white&labelColor=0d1117)
+![FastAPI](https://img.shields.io/badge/FastAPI-0d1117?style=flat-square&logo=fastapi&logoColor=white&labelColor=0d1117)
+![React](https://img.shields.io/badge/React-0d1117?style=flat-square&logo=react&logoColor=white&labelColor=0d1117)
+![Next.js](https://img.shields.io/badge/Next.js-0d1117?style=flat-square&logo=nextdotjs&logoColor=white&labelColor=0d1117)
 
-<img src="https://raw.githubusercontent.com/nabrahma/nabrahma/output/snake.svg" alt="contribution snake" width="98%" />
+<sub>started in game dev — <code>unity</code> · <code>c#</code> · <code>blender</code> — still where I go to play</sub>
 
 </div>
 
-<div align="center">
-<pre>
-████▓▓▓▓▒▒▒▒░░░░                                                    ░░░░▒▒▒▒▓▓▓▓████
-</pre>
-</div>
+<br/>
 
-## ▓▒░ LOADOUT ░▒▓
+## Activity
 
 <div align="center">
 
-`CORE`
-
-<img src="https://img.shields.io/badge/Go-0d1117?style=flat-square&logo=go&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/Python-0d1117?style=flat-square&logo=python&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/C++-0d1117?style=flat-square&logo=cplusplus&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/C-0d1117?style=flat-square&logo=c&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/TypeScript-0d1117?style=flat-square&logo=typescript&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/Bash-0d1117?style=flat-square&logo=gnubash&logoColor=ffffff&labelColor=0d1117" />
-
-`CLOUD NATIVE`
-
-<img src="https://img.shields.io/badge/Kubernetes-0d1117?style=flat-square&logo=kubernetes&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/Docker-0d1117?style=flat-square&logo=docker&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/Linux-0d1117?style=flat-square&logo=linux&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/NGINX-0d1117?style=flat-square&logo=nginx&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/GitHub%20Actions-0d1117?style=flat-square&logo=githubactions&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/Prometheus-0d1117?style=flat-square&logo=prometheus&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/Grafana-0d1117?style=flat-square&logo=grafana&logoColor=ffffff&labelColor=0d1117" />
-
-`DATA + BACKEND`
-
-<img src="https://img.shields.io/badge/PostgreSQL-0d1117?style=flat-square&logo=postgresql&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/Redis-0d1117?style=flat-square&logo=redis&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/MongoDB-0d1117?style=flat-square&logo=mongodb&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/MySQL-0d1117?style=flat-square&logo=mysql&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/FastAPI-0d1117?style=flat-square&logo=fastapi&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/Node.js-0d1117?style=flat-square&logo=nodedotjs&logoColor=ffffff&labelColor=0d1117" />
-
-`INTERFACE`
-
-<img src="https://img.shields.io/badge/React-0d1117?style=flat-square&logo=react&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/Next.js-0d1117?style=flat-square&logo=nextdotjs&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/Tailwind-0d1117?style=flat-square&logo=tailwindcss&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/Vite-0d1117?style=flat-square&logo=vite&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/Git-0d1117?style=flat-square&logo=git&logoColor=ffffff&labelColor=0d1117" /> <img src="https://img.shields.io/badge/GitHub-0d1117?style=flat-square&logo=github&logoColor=ffffff&labelColor=0d1117" />
-
-`LEGACY SAVE FILE`
-
-<img src="https://img.shields.io/badge/Unity-0d1117?style=flat-square&logo=unity&logoColor=ffffff&labelColor=0d1117" /> C# <img src="https://img.shields.io/badge/Blender-0d1117?style=flat-square&logo=blender&logoColor=ffffff&labelColor=0d1117" />
-
-<sub>where I started, and still where I go to play</sub>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/nabrahma/nabrahma/output/snake.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/nabrahma/nabrahma/output/snake-light.svg" />
+  <img src="https://raw.githubusercontent.com/nabrahma/nabrahma/output/snake.svg" width="100%" alt="contribution graph" />
+</picture>
 
 </div>
 
+<br/>
+
 <div align="center">
-<pre>
-▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄
-</pre>
-
-<pre>
-┌─────────────────────────────────────────────────────────┐
-│                                                         │
-│   THE LOUD FAILURE IS CHEAP.                            │
-│                                                         │
-│   THE ONE THAT NEVER FIRES AN ALERT                     │
-│   IS THE ONE THAT COSTS YOU.                            │
-│                                                         │
-└─────────────────────────────────────────────────────────┘
-</pre>
-
-<sub>▓ building the parts nobody sees until they break ▓</sub>
-
+<sub>building the parts nobody sees until they break</sub>
 </div>
