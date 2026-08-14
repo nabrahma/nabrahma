@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="190"
+     viewBox="0 0 480 190" role="img" aria-label="open source contribution stats">
+  <style>
+    .bg    { fill: #0d1117; }
+    .frame { fill: none; stroke: #30363d; stroke-width: 1; }
+    .ttl   { font: 600 13px ui-monospace, "SF Mono", Menlo, monospace; fill: #ffffff; letter-spacing: 1.2px; }
+    .lbl   { font: 400 11px ui-monospace, "SF Mono", Menlo, monospace; fill: #8b949e; letter-spacing: 1px; }
+    .val   { font: 400 11px ui-monospace, "SF Mono", Menlo, monospace; fill: #c9d1d9; }
+    .foot  { font: 400 10px ui-monospace, "SF Mono", Menlo, monospace; fill: #6e7681; }
+    .track { fill: #21262d; }
+    .fill  { fill: #ffffff; transform-origin: 20px 0; transform: scaleX(0);
+             animation: grow 1.1s cubic-bezier(.2,.8,.2,1) forwards; }
+    @keyframes grow { to { transform: scaleX(1) } }
+
+    @media (prefers-color-scheme: light) {
+      .bg { fill: #ffffff; } .frame { stroke: #d0d7de; }
+      .ttl { fill: #1f2328; } .lbl { fill: #656d76; } .val { fill: #1f2328; }
+      .foot { fill: #8c959f; } .track { fill: #eaeef2; } .fill { fill: #1f2328; }
+    }
+  </style>
+
+  <rect class="bg" width="480" height="190" rx="8"/>
+  <rect class="frame" x="0.5" y="0.5" width="479" height="189" rx="8"/>
+
+  <text class="ttl" x="20" y="32">OPEN SOURCE</text>
+  <line x1="20" y1="44" x2="460" y2="44" stroke="#30363d" stroke-width="1"/>
+
+    <text class="lbl" x="20" y="64">MERGED UPSTREAM</text>
+    <text class="val" x="460" y="64" text-anchor="end">17 merged / 29 opened</text>
+    <rect x="20" y="73" width="440" height="7" rx="3.5" class="track"/>
+    <rect x="20" y="73" width="258" height="7" rx="3.5" class="fill"
+          style="animation-delay:0.25s"/>
+    <text class="lbl" x="20" y="106">ISSUES RESOLVED</text>
+    <text class="val" x="460" y="106" text-anchor="end">12 closed / 16 filed</text>
+    <rect x="20" y="115" width="440" height="7" rx="3.5" class="track"/>
+    <rect x="20" y="115" width="330" height="7" rx="3.5" class="fill"
+          style="animation-delay:0.43s"/>
+    <text class="lbl" x="20" y="148">REPOS LANDED IN</text>
+    <text class="val" x="460" y="148" text-anchor="end">3 upstream projects</text>
+    <rect x="20" y="157" width="440" height="7" rx="3.5" class="track"/>
+    <rect x="20" y="157" width="440" height="7" rx="3.5" class="fill"
+          style="animation-delay:0.61s"/>
+
+  <text class="foot" x="20" y="174">headlamp · openfoodfacts-explorer · kthena</text>
+  <text class="foot" x="460" y="174" text-anchor="end">updated 14 Aug 2026</text>
+</svg>
