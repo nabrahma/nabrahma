@@ -50,7 +50,7 @@
     .breathe { animation: breathe 3s ease-in-out infinite }
     @keyframes breathe { 0%,100% { opacity: .16 } 50% { opacity: .42 } }
 
-    /* verdict flips to suspect only while the bad write is in flight —
+    /* verdict flips to suspect only while the bad write is in flight:
        hard gaps between the two states, so they are never both painted */
     .v-ok   { animation: vok 12s linear infinite }
     .v-susp { animation: vsusp 12s linear infinite }
@@ -184,5 +184,5 @@
 
   <text class="cap" x="40" y="298">verdict</text>
   <line class="wire" x1="40" y1="318" x2="860" y2="318" stroke-dasharray="2 4"/>
-  <text class="cap" x="40" y="340">a disagreement is not drift yet &#8212; separating the two is what cut an 8% false-positive rate at 2,000 events/sec</text>
+  <text class="cap" x="40" y="340">a disagreement is not drift yet. separating the two is what cut an 8% false-positive rate at 2,000 events/sec</text>
 </svg>

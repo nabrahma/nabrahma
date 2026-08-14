@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="48" viewBox="0 0 900 48"
+     role="img" aria-label="What &quot;fails quietly&quot; looks like">
+  <style>
+    .txt  { font: 600 20px ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+            fill: #f0f6fc; letter-spacing: .4px }
+    .bar  { fill: #58a6ff }
+    .rule { stroke: #21262d; stroke-width: 1 }
+    .lead { fill: url(#hg) }
+
+    @media (prefers-color-scheme: light) {
+      .txt  { fill: #1f2328 }
+      .bar  { fill: #0969da }
+      .rule { stroke: #eaeef2 }
+      .hA, .hC { stop-color: #0969da } .hB { stop-color: #218bff }
+    }
+
+    /* the heading types itself in once, then stays put */
+    .wipe { animation: wipe .65s steps(31, end) both }
+    @keyframes wipe { from { width: 0 } to { width: 372px } }
+
+    /* accent bar drops in, then breathes */
+    .mark { transform-box: fill-box; transform-origin: center;
+            animation: drop .5s cubic-bezier(.2,.9,.3,1) both, breathe 3.2s ease-in-out 1s infinite }
+    @keyframes drop   { from { transform: scaleY(0); opacity: 0 } to { transform: scaleY(1); opacity: 1 } }
+    @keyframes breathe { 0%,100% { opacity: 1 } 50% { opacity: .45 } }
+
+    /* a light keeps running along the underline */
+    .run { animation: run 7s cubic-bezier(.45,0,.55,1) infinite }
+    @keyframes run {
+      0%   { transform: translateX(-190px); opacity: 0 }
+      12%  { opacity: 1 }
+      86%  { opacity: 1 }
+      100% { transform: translateX(900px); opacity: 0 }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important }
+      .wipe { width: 372px }
+      .run  { display: none }
+    }
+  </style>
+  <defs>
+    <clipPath id="c"><rect class="wipe" x="18" y="6" height="30" width="0"/></clipPath>
+    <linearGradient id="hg" x1="0" y1="0" x2="1" y2="0">
+      <stop class="hA" offset="0"  stop-color="#58a6ff" stop-opacity="0"/>
+      <stop class="hB" offset=".8" stop-color="#58a6ff" stop-opacity=".9"/>
+      <stop class="hC" offset="1"  stop-color="#79c0ff" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+
+  <rect class="bar mark" x="0" y="9" width="3.5" height="24" rx="1.75"/>
+  <g clip-path="url(#c)">
+    <text class="txt" x="18" y="29" textLength="372" lengthAdjust="spacingAndGlyphs">What &quot;fails quietly&quot; looks like</text>
+  </g>
+  <line class="rule" x1="0" y1="43" x2="900" y2="43"/>
+  <g class="run"><rect class="lead" x="0" y="42.2" width="180" height="1.6" rx=".8"/></g>
+</svg>
