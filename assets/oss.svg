@@ -41,13 +41,13 @@
       0%       { transform: translateX(-100px); opacity: 0 }
       14%      { opacity: .95 }
       66%      { opacity: .95 }
-      78%,100% { transform: translateX(396px); opacity: 0 }
+      78%,100% { transform: translateX(371px); opacity: 0 }
     }
     @keyframes gleam1 {
       0%       { transform: translateX(-100px); opacity: 0 }
       14%      { opacity: .95 }
       66%      { opacity: .95 }
-      78%,100% { transform: translateX(507px); opacity: 0 }
+      78%,100% { transform: translateX(451px); opacity: 0 }
     }
     @keyframes gleam2 {
       0%       { transform: translateX(-100px); opacity: 0 }
@@ -72,8 +72,8 @@
       <stop class="gB" offset=".5"  stop-color="#c9e2ff" stop-opacity=".85"/>
       <stop class="gC" offset="1"   stop-color="#58a6ff" stop-opacity="0"/>
     </linearGradient>
-    <clipPath id="clip0"><rect x="22" y="77" width="396" height="8" rx="4"/></clipPath>
-    <clipPath id="clip1"><rect x="22" y="119" width="507" height="8" rx="4"/></clipPath>
+    <clipPath id="clip0"><rect x="22" y="77" width="371" height="8" rx="4"/></clipPath>
+    <clipPath id="clip1"><rect x="22" y="119" width="451" height="8" rx="4"/></clipPath>
     <clipPath id="clip2"><rect x="22" y="161" width="676" height="8" rx="4"/></clipPath>
   </defs>
 
@@ -86,9 +86,9 @@
 
   <g>
     <text class="lbl" x="22" y="68">MERGED UPSTREAM</text>
-    <text class="val" x="698" y="68" text-anchor="end" style="animation-delay:0.7s">17 merged / 29 opened</text>
+    <text class="val" x="698" y="68" text-anchor="end" style="animation-delay:0.7s">17 merged / 31 opened</text>
     <rect class="track" x="22" y="77" width="676" height="8" rx="4"/>
-    <rect class="fill"  x="22" y="77" width="396" height="8" rx="4"
+    <rect class="fill"  x="22" y="77" width="371" height="8" rx="4"
           style="animation-delay:0.2s"/>
     <g clip-path="url(#clip0)">
       <rect class="gleam g0" x="22" y="77" width="90" height="8"
@@ -97,9 +97,9 @@
   </g>
   <g>
     <text class="lbl" x="22" y="110">ISSUES RESOLVED</text>
-    <text class="val" x="698" y="110" text-anchor="end" style="animation-delay:0.88s">12 closed / 16 filed</text>
+    <text class="val" x="698" y="110" text-anchor="end" style="animation-delay:0.88s">12 closed / 18 filed</text>
     <rect class="track" x="22" y="119" width="676" height="8" rx="4"/>
-    <rect class="fill"  x="22" y="119" width="507" height="8" rx="4"
+    <rect class="fill"  x="22" y="119" width="451" height="8" rx="4"
           style="animation-delay:0.38s"/>
     <g clip-path="url(#clip1)">
       <rect class="gleam g1" x="22" y="119" width="90" height="8"
@@ -130,5 +130,5 @@
       <rect class="chipbg" x="274" y="180" width="82" height="21" rx="10.5"/>
       <text class="chiptx" x="285" y="195">headlamp <tspan class="chipn">1</tspan></text>
     </g>
-  <text class="foot" x="698" y="195" text-anchor="end">updated 15 Aug 2026</text>
+  <text class="foot" x="698" y="195" text-anchor="end">updated 16 Aug 2026</text>
 </svg>
