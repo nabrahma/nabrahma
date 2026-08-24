@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="214"
-     viewBox="0 0 720 214" role="img" aria-label="open source contribution stats: 21 pull requests merged into 3 upstream projects">
+     viewBox="0 0 720 214" role="img" aria-label="open source contribution stats: 22 pull requests merged into 3 upstream projects">
   <style>
     .bg     { fill: #0d1117 }
     .frame  { fill: none; stroke: #30363d; stroke-width: 1 }
@@ -41,13 +41,13 @@
       0%       { transform: translateX(-100px); opacity: 0 }
       14%      { opacity: .95 }
       66%      { opacity: .95 }
-      78%,100% { transform: translateX(418px); opacity: 0 }
+      78%,100% { transform: translateX(437px); opacity: 0 }
     }
     @keyframes gleam1 {
       0%       { transform: translateX(-100px); opacity: 0 }
       14%      { opacity: .95 }
       66%      { opacity: .95 }
-      78%,100% { transform: translateX(507px); opacity: 0 }
+      78%,100% { transform: translateX(541px); opacity: 0 }
     }
     @keyframes gleam2 {
       0%       { transform: translateX(-100px); opacity: 0 }
@@ -72,8 +72,8 @@
       <stop class="gB" offset=".5"  stop-color="#c9e2ff" stop-opacity=".85"/>
       <stop class="gC" offset="1"   stop-color="#58a6ff" stop-opacity="0"/>
     </linearGradient>
-    <clipPath id="clip0"><rect x="22" y="77" width="418" height="8" rx="4"/></clipPath>
-    <clipPath id="clip1"><rect x="22" y="119" width="507" height="8" rx="4"/></clipPath>
+    <clipPath id="clip0"><rect x="22" y="77" width="437" height="8" rx="4"/></clipPath>
+    <clipPath id="clip1"><rect x="22" y="119" width="541" height="8" rx="4"/></clipPath>
     <clipPath id="clip2"><rect x="22" y="161" width="676" height="8" rx="4"/></clipPath>
   </defs>
 
@@ -81,14 +81,14 @@
   <rect class="frame" x=".5" y=".5" width="719" height="213" rx="10"/>
 
   <text class="ttl" x="22" y="32">OPEN SOURCE</text>
-  <text class="hdr" x="698" y="32" text-anchor="end">21 merged PRs, all upstream</text>
+  <text class="hdr" x="698" y="32" text-anchor="end">22 merged PRs, all upstream</text>
   <line class="rule" x1="22" y1="44" x2="698" y2="44"/>
 
   <g>
     <text class="lbl" x="22" y="68">MERGED UPSTREAM</text>
-    <text class="val" x="698" y="68" text-anchor="end" style="animation-delay:0.7s">21 merged / 34 opened</text>
+    <text class="val" x="698" y="68" text-anchor="end" style="animation-delay:0.7s">22 merged / 34 opened</text>
     <rect class="track" x="22" y="77" width="676" height="8" rx="4"/>
-    <rect class="fill"  x="22" y="77" width="418" height="8" rx="4"
+    <rect class="fill"  x="22" y="77" width="437" height="8" rx="4"
           style="animation-delay:0.2s"/>
     <g clip-path="url(#clip0)">
       <rect class="gleam g0" x="22" y="77" width="90" height="8"
@@ -97,9 +97,9 @@
   </g>
   <g>
     <text class="lbl" x="22" y="110">ISSUES RESOLVED</text>
-    <text class="val" x="698" y="110" text-anchor="end" style="animation-delay:0.88s">15 closed / 20 filed</text>
+    <text class="val" x="698" y="110" text-anchor="end" style="animation-delay:0.88s">16 closed / 20 filed</text>
     <rect class="track" x="22" y="119" width="676" height="8" rx="4"/>
-    <rect class="fill"  x="22" y="119" width="507" height="8" rx="4"
+    <rect class="fill"  x="22" y="119" width="541" height="8" rx="4"
           style="animation-delay:0.38s"/>
     <g clip-path="url(#clip1)">
       <rect class="gleam g1" x="22" y="119" width="90" height="8"
@@ -120,7 +120,7 @@
 
     <g class="chip" style="animation-delay:1.05s">
       <rect class="chipbg" x="22" y="180" width="76" height="21" rx="10.5"/>
-      <text class="chiptx" x="33" y="195">kthena <tspan class="chipn">12</tspan></text>
+      <text class="chiptx" x="33" y="195">kthena <tspan class="chipn">13</tspan></text>
     </g>
     <g class="chip" style="animation-delay:1.17s">
       <rect class="chipbg" x="106" y="180" width="166" height="21" rx="10.5"/>
@@ -130,5 +130,5 @@
       <rect class="chipbg" x="280" y="180" width="82" height="21" rx="10.5"/>
       <text class="chiptx" x="291" y="195">headlamp <tspan class="chipn">1</tspan></text>
     </g>
-  <text class="foot" x="698" y="195" text-anchor="end">updated 23 Aug 2026</text>
+  <text class="foot" x="698" y="195" text-anchor="end">updated 24 Aug 2026</text>
 </svg>
