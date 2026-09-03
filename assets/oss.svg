@@ -130,5 +130,5 @@
       <rect class="chipbg" x="280" y="180" width="82" height="21" rx="10.5"/>
       <text class="chiptx" x="291" y="195">headlamp <tspan class="chipn">1</tspan></text>
     </g>
-  <text class="foot" x="698" y="195" text-anchor="end">updated 02 Sep 2026</text>
+  <text class="foot" x="698" y="195" text-anchor="end">updated 03 Sep 2026</text>
 </svg>
