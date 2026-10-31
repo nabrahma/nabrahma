@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="214"
-     viewBox="0 0 720 214" role="img" aria-label="open source contribution stats: 34 pull requests merged into 4 upstream projects">
+     viewBox="0 0 720 214" role="img" aria-label="open source contribution stats: 35 pull requests merged into 4 upstream projects">
   <style>
     .bg     { fill: #0d1117 }
     .frame  { fill: none; stroke: #30363d; stroke-width: 1 }
@@ -41,7 +41,7 @@
       0%       { transform: translateX(-100px); opacity: 0 }
       14%      { opacity: .95 }
       66%      { opacity: .95 }
-      78%,100% { transform: translateX(489px); opacity: 0 }
+      78%,100% { transform: translateX(493px); opacity: 0 }
     }
     @keyframes gleam1 {
       0%       { transform: translateX(-100px); opacity: 0 }
@@ -72,7 +72,7 @@
       <stop class="gB" offset=".5"  stop-color="#c9e2ff" stop-opacity=".85"/>
       <stop class="gC" offset="1"   stop-color="#58a6ff" stop-opacity="0"/>
     </linearGradient>
-    <clipPath id="clip0"><rect x="22" y="77" width="489" height="8" rx="4"/></clipPath>
+    <clipPath id="clip0"><rect x="22" y="77" width="493" height="8" rx="4"/></clipPath>
     <clipPath id="clip1"><rect x="22" y="119" width="522" height="8" rx="4"/></clipPath>
     <clipPath id="clip2"><rect x="22" y="161" width="676" height="8" rx="4"/></clipPath>
   </defs>
@@ -86,9 +86,9 @@
 
   <g>
     <text class="lbl" x="22" y="68">MERGED UPSTREAM</text>
-    <text class="val" x="698" y="68" text-anchor="end" style="animation-delay:0.7s">34 merged / 47 opened</text>
+    <text class="val" x="698" y="68" text-anchor="end" style="animation-delay:0.7s">35 merged / 48 opened</text>
     <rect class="track" x="22" y="77" width="676" height="8" rx="4"/>
-    <rect class="fill"  x="22" y="77" width="489" height="8" rx="4"
+    <rect class="fill"  x="22" y="77" width="493" height="8" rx="4"
           style="animation-delay:0.2s"/>
     <g clip-path="url(#clip0)">
       <rect class="gleam g0" x="22" y="77" width="90" height="8"
@@ -124,15 +124,15 @@
     </g>
     <g class="chip" style="animation-delay:1.17s">
       <rect class="chipbg" x="106" y="180" width="136" height="21" rx="10.5"/>
-      <text class="chiptx" x="117" y="195">Presently-Campus <tspan class="chipn">11</tspan></text>
+      <text class="chiptx" x="117" y="195">Presently-Campus <tspan class="chipn">12</tspan></text>
     </g>
     <g class="chip" style="animation-delay:1.29s">
       <rect class="chipbg" x="250" y="180" width="166" height="21" rx="10.5"/>
-      <text class="chiptx" x="261" y="195">openfoodfacts-explorer <tspan class="chipn">4</tspan></text>
+      <text class="chiptx" x="261" y="195">openfoodfacts-explorer <tspan class="chipn">3</tspan></text>
     </g>
     <g class="chip" style="animation-delay:1.41s">
       <rect class="chipbg" x="424" y="180" width="82" height="21" rx="10.5"/>
       <text class="chiptx" x="435" y="195">headlamp <tspan class="chipn">1</tspan></text>
     </g>
-  <text class="foot" x="698" y="195" text-anchor="end">updated 30 Oct 2026</text>
+  <text class="foot" x="698" y="195" text-anchor="end">updated 31 Oct 2026</text>
 </svg>
